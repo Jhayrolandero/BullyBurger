@@ -4,6 +4,9 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: "Luckiest Guy", cursive;
+}
 #sec1 {
   background-image: url("../public/images/bg.webp");
   height: 100svh;
@@ -18,4 +21,43 @@
   justify-content: space-between;
   padding-left: 32px;
   padding-right: 32px;
+}
+
+.order-btn {
+  background-color: transparent;
+  color: white;
+  border: #d07026 solid 4px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  font-family: "Luckiest Guy", cursive;
+  cursor: pointer;
+}
+
+#title {
+  width: 400px;
+}
+
+#feature-burger {
+  width: 480px;
+}
+#main1 {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+#sub-main-1,
+#title-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  gap: 1em;
 }
