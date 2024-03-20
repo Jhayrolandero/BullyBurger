@@ -1,0 +1,2 @@
+# Bully Burger
+Bully Burger is a POS inspired by a real-life business by our classmate. The point of the website is to streamline the process of ordering products from the Bully Burger enterprise and also to advertise the product to a wider audience.
