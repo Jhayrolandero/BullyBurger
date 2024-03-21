@@ -3,21 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Bully Burger</title>
     <link rel="stylesheet" href="./src/style.css" />
+    <link rel="icon" type="image/x-icon" href="./public/images/favicon.ico" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora&family=Luckiest+Guy&family=Pixelify+Sans:wght@600&family=Ubuntu:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <title>Bully Burger</title>
+    <script defer src="./src/index.js"></script>
   </head>
   <body>
+    <nav id="navbar">
+      <img src="./public/images/Frame 83.svg" alt="" />
+      <button class="order-btn">Order Now</button>
+    </nav>
     <section id="sec1">
-      <nav id="navbar">
-        <img src="./public/images/Frame 83.svg" alt="" />
-        <button class="order-btn">Order Now</button>
-      </nav>
       <main id="main1">
         <div id="sub-main-1">
           <div id="title-card">
@@ -26,15 +28,56 @@
               src="./public/images/title.svg"
               alt="Bully Burger"
             />
-            <small>Feel the punch in every munch</small>
+            <small id="bio">Feel the punch in every munch</small>
           </div>
           <button class="order-btn">Order Now</button>
+          <div id="burger-group">
+            <button
+              class="burger-selector"
+              onclick="displayBurger('./public/images/burgers/burger-1.svg')"
+            >
+              <img
+                src="./public/images/burgers/burger-1.svg"
+                alt="burger1"
+                id="burger-1"
+              />
+              <p>Erix's Special</p>
+            </button>
+            <button
+              class="burger-selector"
+              onclick="displayBurger('./public/images/burgers/burger-2.svg')"
+            >
+              <img
+                src="./public/images/burgers/burger-2.svg"
+                alt="burger2"
+                id="burger-2"
+              />
+              <p>Aze's Whomper</p>
+            </button>
+            <button
+              class="burger-selector"
+              onclick="displayBurger('./public/images/burgers/burger-3.svg')"
+            >
+              <img
+                src="./public/images/burgers/burger-3.svg"
+                alt="burger3"
+                id="burger-3"
+              />
+              <p>Cjay's Muncher</p>
+            </button>
+          </div>
         </div>
-        <img
-          id="feature-burger"
-          src="./public/images/burgers/burger-1.svg"
-          alt="burger"
-        />
+        <div id="sub-main-2">
+          <img
+            id="featured-burger"
+            src="./public/images/burgers/burger-1.svg"
+            alt="burger"
+          />
+          <div id="burger-price">
+            <p id="burger-name">Erix's Special</p>
+            <p>P49.00</p>
+          </div>
+        </div>
       </main>
     </section>
   </body>

@@ -2,11 +2,9 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-}
-
-body {
   font-family: "Luckiest Guy", cursive;
 }
+
 #sec1 {
   background-image: url("../public/images/bg.webp");
   height: 100svh;
@@ -16,6 +14,10 @@ body {
 }
 
 #navbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -41,9 +43,6 @@ body {
   width: 400px;
 }
 
-#feature-burger {
-  width: 480px;
-}
 #main1 {
   display: flex;
   flex-direction: row;
@@ -51,13 +50,129 @@ body {
   align-items: center;
   padding-left: 32px;
   padding-right: 32px;
+  height: 100%;
 }
 
-#sub-main-1,
 #title-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   color: white;
   gap: 1em;
+  justify-content: center;
+}
+
+#sub-main-1,
+#sub-main-2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+#sub-main-1 {
+  gap: 2.5rem;
+}
+
+#sub-main-2 {
+  position: relative;
+}
+#featured-burger {
+  width: 400px;
+}
+
+#bio {
+  font-size: 1.5rem;
+}
+
+#burger-group {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.burger-selector {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+.burger-selector img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  aspect-ratio: 1;
+  border-radius: 100%;
+  border: white solid 1px;
+  padding: 0.2em;
+}
+
+.burger-selector:hover {
+  transform: scale(1.2);
+}
+
+#burger-price {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(40px);
+  background-color: rgba(255, 255, 255, 0.1);
+  bottom: 40px;
+  right: 80px;
+  flex-direction: column;
+}
+#burger-price p {
+  font-size: 2.5rem;
+  color: white;
+}
+#burger-price #burger-name {
+  font-size: 1.5rem;
+}
+@media (min-width: 1024px) {
+  #featured-burger {
+    width: 548px;
+    height: 600px;
+    object-fit: fill;
+  }
+
+  .burger-selector img {
+    width: 124px;
+    height: 124px;
+  }
+
+  #burger-price {
+    width: 192px;
+    height: 192px;
+    bottom: 80px;
+    right: 80px;
+  }
+}
+
+@media (min-width: 1440px) {
+  #title {
+    width: 480px;
+  }
+
+  #featured-burger {
+    width: 800px;
+    height: 840px;
+    object-fit: fill;
+  }
+
+  .burger-selector img {
+    width: 140px;
+    height: 140px;
+  }
+  #burger-price {
+    width: 250px;
+    height: 250px;
+  }
 }
