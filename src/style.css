@@ -5,12 +5,23 @@
   font-family: "Luckiest Guy", cursive;
 }
 
+section:nth-child(even) {
+  background-color: #151414;
+  height: 100vh;
+}
+
+section:nth-child(odd) {
+  background-color: #1e1e1e;
+  height: 100vh;
+}
+
 #sec1 {
   background-image: url("../public/images/bg.webp");
   height: 100svh;
   width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow-y: hidden;
 }
 
 #navbar {
@@ -23,6 +34,7 @@
   justify-content: space-between;
   padding-left: 32px;
   padding-right: 32px;
+  z-index: 1;
 }
 
 .order-btn {
@@ -139,13 +151,17 @@
 @media (min-width: 1024px) {
   #featured-burger {
     width: 548px;
-    height: 600px;
+    height: 580px;
     object-fit: fill;
   }
 
   .burger-selector img {
     width: 124px;
     height: 124px;
+  }
+
+  #title {
+    width: 340px;
   }
 
   #burger-price {
