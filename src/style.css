@@ -174,5 +174,7 @@
   #burger-price {
     width: 250px;
     height: 250px;
+    bottom: 40px;
+    right: 80px;
   }
 }
