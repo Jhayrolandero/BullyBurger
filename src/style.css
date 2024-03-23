@@ -209,3 +209,55 @@ section:nth-child(odd) {
     transform: scale(1);
   }
 }
+
+/* Section 2 */
+
+#section2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.main-1,
+.main-2 {
+  height: 100%;
+}
+
+.main-1 {
+  width: 40%;
+  position: relative;
+}
+.main-1 img {
+  max-height: 80svh;
+  position: absolute;
+  top: 10%;
+  left: -30%;
+  width: 100%;
+}
+
+.main-1 div {
+  top: 0;
+  left: -30%;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  border: dashed 3px #ffcf4e;
+  border-radius: 100%;
+}
+
+.main-2 h1 {
+  font-size: 4.5rem;
+  color: #ffcf4e;
+  text-align: center;
+}
+
+.main-2 {
+  width: 60%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 24px;
+  padding-left: 24px;
+}
