@@ -17,6 +17,10 @@ section:nth-child(odd) {
   color: white;
 }
 
+section {
+  padding-left: 32px;
+  padding-right: 32px;
+}
 #sec1 {
   background-image: url("../public/images/bg.webp");
   height: 100svh;
@@ -62,8 +66,6 @@ section:nth-child(odd) {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding-left: 32px;
-  padding-right: 32px;
   height: 100%;
 }
 
@@ -95,6 +97,7 @@ section:nth-child(odd) {
 }
 #featured-burger {
   width: 400px;
+  max-height: 90svh;
 }
 
 .burgerAnimation {
@@ -170,8 +173,6 @@ section:nth-child(odd) {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding-left: 2rem;
-  padding-right: 2rem;
 }
 
 .main-1,
@@ -235,6 +236,80 @@ section:nth-child(odd) {
   z-index: 1;
 }
 
+@keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+#section3 {
+  display: flex;
+  flex-direction: row;
+}
+
+#section3 img {
+  max-height: 90svh;
+}
+
+#section3 #sec-3-main-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#section3 #sec-3-main-1,
+#section3 #sec-3-main-3 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+}
+#section3 #sec-3-main-1 h4 {
+  font-size: 10rem;
+  color: #d07026;
+  line-height: 0.8;
+}
+
+#section3 #sec-3-main-3 h4 {
+  color: #d07026;
+  font-size: 3.5rem;
+}
+
+#section3 #sec-3-main-3 p {
+  font-size: 2.5rem;
+  background-color: #d07026;
+  padding: 0.25em;
+  border-radius: 0.25em;
+}
+
+#section4 {
+  display: flex;
+  flex-direction: row;
+}
+
+#section4 #sec-4-main-1,
+#section4 #sec-4-main-2 {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+#section4 #sec-4-main-1 h4 {
+  font-size: 5rem;
+}
+
+#section4 #sec-4-main-1 p {
+  font-size: 2rem;
+}
+
+#section4 #sec-4-main-2 img {
+  max-height: 80svh;
+}
+
 @media (min-width: 1024px) {
   #featured-burger {
     width: 548px;
@@ -263,14 +338,17 @@ section:nth-child(odd) {
     color: #ffcf4e;
     text-align: center;
   }
-}
 
-@keyframes rotate {
-  from {
-    -webkit-transform: rotate(0deg);
+  #section3 #sec-3-main-1 h4 {
+    font-size: 7rem;
   }
-  to {
-    -webkit-transform: rotate(360deg);
+
+  #section3 #sec-3-main-3 p {
+    font-size: 1.5rem;
+  }
+
+  #section3 #sec-3-main-3 h4 {
+    font-size: 2rem;
   }
 }
 
@@ -294,5 +372,17 @@ section:nth-child(odd) {
     height: 250px;
     bottom: 40px;
     right: 80px;
+  }
+
+  #section3 #sec-3-main-1 h4 {
+    font-size: 10rem;
+  }
+
+  #section3 #sec-3-main-3 h4 {
+    font-size: 3.5rem;
+  }
+
+  #section3 #sec-3-main-3 p {
+    font-size: 2.5rem;
   }
 }
