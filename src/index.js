@@ -1,9 +1,4 @@
-import { Nav } from "./components/nav/nav.js";
-
-var burgerPics = ["./"];
-
 const displayedBurger = document.getElementById("featured-burger");
-
 const displayBurger = (name) => {
   displayedBurger.src = name;
 
@@ -14,5 +9,3 @@ const displayBurger = (name) => {
     displayedBurger.classList.remove("burgerAnimation");
   }, 3000); // Adjust timeout to match animation duration};
 };
-
-customElements.define("main-nav", Nav);
