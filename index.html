@@ -14,6 +14,11 @@
     <title>Bully Burger</title>
 
     <script defer type="module" src="./src/index.js"></script>
+    <script
+      defer
+      type="module"
+      src="./src/components/review/review-box.js"
+    ></script>
   </head>
   <body>
     <nav id="navbar">
@@ -104,38 +109,68 @@
       <h4>Reviews Highlight</h4>
       <main id="sec-4-main-4">
         <div class="review-container">
-          <div class="review-box">
-            <img src="./public/images/users/elonmusk.png" alt="" />
-            <h4>Elon Musk</h4>
-            <p>
-              "Exceptional taste and quality ingredients! Every bite of their
-              burgers is a flavor explosion. A must-try for burger enthusiasts!"
-            </p>
-          </div>
-          <div class="review-box">
-            <img src="./public/images/users/elonmusk.png" alt="" />
-            <h4>Elon Musk</h4>
-            <p>
-              "Exceptional taste and quality ingredients! Every bite of their
-              burgers is a flavor explosion. A must-try for burger enthusiasts!"
-            </p>
-          </div>
-          <div class="review-box">
-            <img src="./public/images/users/elonmusk.png" alt="" />
-            <h4>Elon Musk</h4>
-            <p>
-              "Exceptional taste and quality ingredients! Every bite of their
-              burgers is a flavor explosion. A must-try for burger enthusiasts!"
-            </p>
-          </div>
-        </div>
-        <div class="review-container">
-          <div></div>
-          <div></div>
-          <div></div>
+          <my-review-box class="hidden">
+            <span slot="username">Elon Musk</span>
+            <span slot="review"
+              >"Exceptional taste and quality ingredients! Every bite of their
+              burgers is a flavor explosion. A must-try for burger
+              enthusiasts!"</span
+            >
+          </my-review-box>
+          <my-review-box class="hidden">
+            <span slot="username">Jeff Bezos</span>
+            <span slot="review"
+              >"Exceptional taste and quality ingredients! Every bite of their
+              burgers is a flavor explosion. A must-try for burger
+              enthusiasts!"</span
+            >
+          </my-review-box>
+          <my-review-box class="hidden">
+            <span slot="username">Mark Zuckerberg</span>
+            <span slot="review"
+              >"Exceptional taste and quality ingredients! Every bite of their
+              burgers is a flavor explosion. A must-try for burger
+              enthusiasts!"</span
+            >
+          </my-review-box>
         </div>
       </main>
     </section>
-    <my-paragraph></my-paragraph>
+    <section id="section5">
+      <div id="image-track" data-mouse-down-at="0" data-prev-percentage="0">
+        <h4>Fantastic Menu</h4>
+        <img
+          class="image"
+          src="https://img.freepik.com/photos-gratuite/hamburgers-gros-plan-cornichons_23-2148784498.jpg?t=st=1711612468~exp=1711616068~hmac=4d0a60291eccb340ec09a532031673387657d659f9e713dd00d3563e7f9e62a8&w=1380"
+          draggable="false"
+        />
+        <img
+          class="image"
+          src="https://img.freepik.com/photos-gratuite/burger-boeuf-viande-laitue-fromage-tomate-frites-vue-laterale_141793-3523.jpg?t=st=1711612594~exp=1711616194~hmac=a4629dad045157f34f04e8681ecda9da80c98f10739fae3b115e7e649dd6e159&w=1380"
+          draggable="false"
+        />
+        <img
+          class="image"
+          src="https://img.freepik.com/photos-gratuite/burger-boeuf-grille-fromage-tomate-genere-par-ia_24640-82315.jpg?t=st=1711612615~exp=1711616215~hmac=a46b4f44e9b427166646175f78c683530741cb27f489d22a384ca4d2552eb3af&w=1380"
+          draggable="false"
+        />
+        <img
+          class="image"
+          src="https://img.freepik.com/photos-gratuite/cheeseburger-grille-pain-au-sesame-frites-generees-par-ia_188544-23200.jpg?t=st=1711613462~exp=1711617062~hmac=d202c5a09d5fda41784d9eaf893d601b8c57d23db22677bea0e6b9d031fb41bc&w=1380"
+          draggable="false"
+        />
+        <img
+          class="image"
+          src="https://img.freepik.com/photos-gratuite/hamburger-classique-planche-bois_140725-1322.jpg?t=st=1711613119~exp=1711616719~hmac=ce131f683bc48e069d963568de4e46239fbcc6aa173d9dd3cc339a6a1f81861f&w=1380"
+          draggable="false"
+        />
+        <img
+          class="image"
+          src="https://img.freepik.com/photos-gratuite/burger-boeuf-grille-fromage-frites-genere-par-ia_24640-81640.jpg?t=st=1711613209~exp=1711616809~hmac=cb5169600caa576070008094ba0ef7949706f105f667df13d30083d30d17b98e&w=1380"
+          draggable="false"
+        />
+        <h4>Hungry Yet?</h4>
+      </div>
+    </section>
   </body>
 </html>

@@ -5,6 +5,29 @@
   font-family: "Luckiest Guy", cursive;
 }
 
+.hidden {
+  transform: translateY(100%);
+  transition: ease-out 1s;
+  filter: blur(4px);
+}
+
+.show {
+  transform: translateY(0%);
+  opacity: 1;
+  filter: blur(0px);
+}
+
+my-review-box:nth-child(1) {
+  transition-delay: 150ms;
+}
+my-review-box:nth-child(2) {
+  transition-delay: 300ms;
+}
+
+my-review-box:nth-child(3) {
+  transition-delay: 450ms;
+}
+
 section:nth-child(even) {
   background-color: #151414;
   height: 100svh;
@@ -189,9 +212,6 @@ section {
 }
 .main-1 div img {
   max-height: 100%;
-  /* position: absolute;
-  top: 10%;
-  left: -30%; */
   width: 100%;
 }
 
@@ -299,7 +319,6 @@ section {
 #sec-4-main-4 {
   display: flex;
   flex-direction: column;
-  flex: 1;
   width: 100%;
 }
 
@@ -309,29 +328,36 @@ section {
   gap: 2rem;
 }
 
-.review-box {
-  content: "";
-  background-color: white;
+my-review-box {
   flex: 1;
+}
+
+#section5 {
+  position: relative;
+  overflow: hidden;
+}
+
+#image-track {
   display: flex;
-  flex-direction: column;
-  color: black;
+  gap: 4vmin;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(0%, -50%);
+  user-select: none; /* -- Prevent image highlighting -- */
   align-items: center;
-  justify-content: center;
-  padding: 1.5em;
-  border-radius: 1.5em;
 }
 
-.review-box h4 {
-  font-size: 2.5rem;
+#image-track > h4 {
+  text-align: center;
+  font-size: 5rem;
+  /* padding-top: 1em; */
 }
-
-.review-box p {
-  font-size: 1.5rem;
-}
-#sec-4-main-4 .review-container > div img {
-  width: 100px;
-  height: 100px;
+#image-track > .image {
+  width: 44vmin;
+  height: 56vmin;
+  object-fit: cover;
+  object-position: 100% center;
 }
 @media (min-width: 1024px) {
   #featured-burger {
@@ -362,6 +388,10 @@ section {
     text-align: center;
   }
 
+  #section3 img {
+    max-height: 70svh;
+  }
+
   #section3 #sec-3-main-1 h4 {
     font-size: 7rem;
   }
@@ -371,7 +401,7 @@ section {
   }
 
   #section3 #sec-3-main-3 h4 {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 }
 
@@ -395,6 +425,10 @@ section {
     height: 250px;
     bottom: 40px;
     right: 80px;
+  }
+
+  #section3 img {
+    max-height: 90svh;
   }
 
   #section3 #sec-3-main-1 h4 {
