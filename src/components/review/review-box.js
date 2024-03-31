@@ -2,10 +2,10 @@ const template = document.createElement("template");
 template.innerHTML = `
 <style>
 .review-box {
-    background-color: white;
-    display: flex;
+  color: white;
+  border: 1px solid white;
+  display: flex;
     flex-direction: column;
-    color: black;
     align-items: center;
     justify-content: center;
     padding: 1.5em;

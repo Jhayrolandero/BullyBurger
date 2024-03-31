@@ -1,16 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #navbar {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   padding-left: 32px;
   padding-right: 32px;
-  z-index: 999;
 }
 
+
+
 body {
-  background-color: tomato;
+  background-color: black;
+}
+
+
+main {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.burger-section {
+  display: flex;
+  gap: 1rem;
+  background-color: white;
+  padding: 1em;
+  width: 70%;
+}
+
+.burger-menu {
+  background-color: white;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5em;
+  border-radius: 8px;
+}
+
+
+.burger-menu img {
+  width: 240px;
+  object-fit: contain;
 }
