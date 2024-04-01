@@ -1,6 +1,8 @@
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
+
+
 .review-box {
     background-color: white;
     display: flex;
@@ -12,21 +14,51 @@ template.innerHTML = `
     border-radius: 1.5em;
   }
   
-  .review-box h4 {
-    font-size: 2.5rem;
-    margin: 0;
-  }
-  
-  .review-box p {
-    font-size: 1.5rem;
-  }
+      .review-box h4 {
+        font-size: 2.5rem;
+        margin: 0;
+      }
+      
+      .review-box p {
+        font-size: 1.5rem;
+      }
   .review-container > div img {
     width: 100px;
     height: 100px;
-  }  
+  }
+  
+  @media (min-width: 1024px) {
+    .review-box h4 {
+      font-size: 2rem;
+      margin: 0;
+    }
+    
+    .review-box p {
+      font-size: 1rem;
+    }
+
+    .review-box {
+    padding: 1em;
+    }
+    
+  }
+
+  @media (min-width: 1440px) {
+    .review-box h4 {
+      font-size: 2.5rem;
+      margin: 0;
+    }
+    
+    .review-box p {
+      font-size: 1.5rem;
+    }
+    .review-box {
+    padding: 1em;
+    }
+  }
 </style>
-  <div class="review-box">
-    <img src="./public/images/users/elonmusk.png" alt="" />
+<div class="review-box">
+<img src="./public/images/users/elonmusk.png" alt="" />
     <h4><slot name="username">User 69</slot></h4>
     <p>
     <slot name="review">Lorem ipsum dolor</slot>

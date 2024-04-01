@@ -403,9 +403,17 @@ my-review-box {
   #section3 #sec-3-main-3 h4 {
     font-size: 3rem;
   }
+
+  #section4 > h4 {
+    font-size: 6rem;
+  }
 }
 
 @media (min-width: 1440px) {
+  #section4 > h4 {
+    font-size: 6.5rem;
+  }
+
   #title {
     width: 480px;
   }
