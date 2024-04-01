@@ -9,7 +9,7 @@ template.innerHTML = `
 }
 .burger-menu {
     background-color: white;
-    border: 1px solid black;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,6 +30,7 @@ template.innerHTML = `
   
   .burger-menu h4 {
     font-size: 1.5rem;
+    font-weight: 400;
   }
   .burger-menu > p {
     width: 100%;
@@ -49,9 +50,9 @@ template.innerHTML = `
   }
 </style>
 <div class="burger-menu">
-    <img src="../public/images/burgers/burger-1.svg" alt="">
-    <h4>Erix's Burger</h4>
-    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus enim repudiandae esse fuga temporibus minus non at ratione excepturi rerum.</p>
+    <img src="../public/images/burgers/burger-1.svg" alt="burgar">
+    <h4></h4>
+    <p></p>
     <button class="button1">Order Now</button>
 </div>
 
@@ -64,6 +65,27 @@ class Menu extends HTMLElement {
     var shadow = this.attachShadow({ mode: "open" });
     shadow.append(template.content.cloneNode(true));
   }
+
+  static get observedAttributes() {
+    return ['data-burger-title', 'data-burger-description', 'data-burger-image'];
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    console.log(name)
+
+    switch(name) {
+      case 'data-burger-title':
+        this.shadowRoot.querySelector("h4").textContent = newValue
+        break
+      case 'data-burger-description':
+        this.shadowRoot.querySelector("p").textContent = newValue
+        break
+      case 'data-burger-image':
+        this.shadowRoot.querySelector("img").src = newValue
+        break;  
+      }
+  }
+
 }
 
 customElements.define("my-menu", Menu);

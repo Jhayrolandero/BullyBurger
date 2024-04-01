@@ -16,7 +16,7 @@ template.innerHTML = `
     height: fit-content;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 
 .burger-section h4 {
@@ -34,14 +34,8 @@ template.innerHTML = `
 </style>
 <section class="burger-section">
     <h4>Special Burger</h4>
+    <p></p>
     <div class="burger-menu">
-        <my-menu></my-menu>
-        <my-menu></my-menu>
-        <my-menu></my-menu>
-        <my-menu></my-menu>
-        <my-menu></my-menu>
-        <my-menu></my-menu>
-        <my-menu></my-menu>
     </div>
 </section>
 `;
@@ -52,8 +46,42 @@ class BurgerSection extends HTMLElement {
 
     var shadow = this.attachShadow({ mode: "open" });
     shadow.append(template.content.cloneNode(true));
-    this.shadowRoot.querySelector('h4').innerText = this.getAttribute('title')
-  }
+    
+}
+
+connectedCallback() {
+    this.shadowRoot.querySelector('h4').textContent = this.getAttribute('title')
+}
+
+
+static get observedAttributes() {
+    return ['data-special-burgers'];
+}
+
+attributeChangedCallback(name, oldValue, newValue) {
+    if (name === 'data-special-burgers') {
+        this.renderBurgers(newValue);
+    }
+}
+
+
+
+renderBurgers(burgersString) {
+    let burgers = JSON.parse(burgersString)
+    // let burgerArray = burgersString.split(",")
+    // console.log(burgerArray[0])
+
+    const burgerMenuContainer = this.shadowRoot.querySelector('.burger-menu');
+
+    burgers.forEach(burger => {
+        const menuItem = document.createElement('my-menu');
+        menuItem.setAttribute('data-burger-title', burger.title);
+        menuItem.setAttribute('data-burger-description', burger.desc);
+        menuItem.setAttribute('data-burger-image', burger.image)
+        burgerMenuContainer.appendChild(menuItem);
+    });
+}
+
 }
 
 customElements.define("my-burger-section", BurgerSection);
