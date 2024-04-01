@@ -3,36 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="icon" type="image/x-icon" href="../public/images/favicon.ico" />
+    <title>Bully Burger</title>
     <link rel="stylesheet" href="../src/css/order.css" />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Lora&family=Luckiest+Guy&family=Pixelify+Sans:wght@600&family=Ubuntu:wght@400;700&display=swap"
+    rel="stylesheet"
+  />
+    <!-- <script defer src="../src/components/menu/menu.js"></script> -->
+    <script defer type="module" src="../src/components/burger-section/burger-section.js"></script>
   </head>
   <body>
     <nav id="navbar">
       <img src="../public/images/Frame 83.svg" alt="" />
     </nav>
-    <main>
-      <section  class="burger-section">
-        <div class="burger-menu">
-          <img src="../public/images/burgers/burger-1.svg" alt="">
-          <h4>Erix's Burger</h4>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus enim repudiandae esse fuga temporibus minus non at ratione excepturi rerum.</p>
+    <main class="container">
+      <aside class="sidebar">
+        <div class="search">
+          <input type="text" placeholder="Search">
         </div>
-        <div class="burger-menu">
-          <img src="../public/images/burgers/burger-1.svg" alt="">
-          <h4>Erix's Burger</h4>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus enim repudiandae esse fuga temporibus minus non at ratione excepturi rerum.</p>
+        <div class="menu">
+          <h4>Menu</h4>
+          <button>Special Burger</button>
+          <button>Steakhouse Burger</button>
+          <button>Mini Burger</button>
+          <button>Stacked Burger</button>
+          <button>Smashed Burger</button>
+          <button>Onion Burger</button>
+          <button>Cheese Burger</button>
+          <button>Fries</button>
+          <button>Drinks</button>
         </div>
-        <div class="burger-menu">
-          <img src="../public/images/burgers/burger-1.svg" alt="">
-          <h4>Erix's Burger</h4>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus enim repudiandae esse fuga temporibus minus non at ratione excepturi rerum.</p>
+        <div class="order">
+          <h4>My Order</h4>
+          <div>
+            <img src="../public/images/cart.svg" alt="">
+            <p>Cart is Empty</p>
+          </div>
+          <button class="button1">Confirm Order</button>
         </div>
-        <div class="burger-menu">
-          <img src="../public/images/burgers/burger-1.svg" alt="">
-          <h4>Erix's Burger</h4>
-          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus enim repudiandae esse fuga temporibus minus non at ratione excepturi rerum.</p>
-        </div>
-      </section>
+      </aside>
+
+      <main class="burger-container">
+        <my-burger-section title="Special Burgers"></my-burger-section>
+        <my-burger-section title="Steakhouse Burgers"></my-burger-section>
+        <my-burger-section title="Mini Burgers"></my-burger-section>
+        <my-burger-section title="Stacked Burgers"></my-burger-section>
+        <my-burger-section title="Smashed Burgers"></my-burger-section>
+        <my-burger-section title="Onion Burgers"></my-burger-section>
+        <my-burger-section title="Cheese Burgers"></my-burger-section>
+        <my-burger-section title="Fries"></my-burger-section>
+        <my-burger-section title="Drinks"></my-burger-section>
+      </main>
     </main>
   </body>
 </html>
