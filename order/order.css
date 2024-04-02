@@ -1,0 +1,146 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Luckiest Guy", cursive;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+body {
+  background-color: black;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.burger-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 15%;
+  min-width: 240px;
+  max-width: 480;
+}
+
+.sidebar .search,
+.menu,
+.order {
+  background-color: white;
+}
+
+.search {
+  padding: 0.5em;
+  border-radius: 8px;
+}
+
+.search > input {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid black;
+  padding: 0.5rem;
+}
+
+.search > input::placeholder {
+  font-size: 1rem;
+}
+
+.menu h4,
+.order h4 {
+  font-size: 1.5rem;
+  align-self: flex-start;
+  padding: 0 0.5em;
+  padding-top: 0.5em;
+}
+
+.menu h4 > span,
+.order h4 > span {
+  margin-right: 0.5rem;
+}
+.menu button {
+  font-size: 1rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 16px;
+}
+
+.menu .menu-btn {
+  border: none;
+  background-color: transparent;
+  color: black;
+  font-size: 1rem;
+  padding: 0.5em;
+  text-align: start;
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  transition: all 0.2s;
+  align-items: center;
+}
+
+.menu-btn > i {
+  font-size: 24px;
+}
+.menu-btn:hover {
+  background-color: #d07026;
+  color: #ffcf4e;
+}
+.menu > .menu-btn:nth-child(10):hover {
+  background-color: #d07026;
+  color: #ffcf4e;
+  border-end-start-radius: 1rem;
+  border-end-end-radius: 1rem;
+}
+
+.order,
+.order > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.order {
+  gap: 3rem;
+}
+
+.button1 {
+  width: 100%;
+  border: none;
+  background-color: #d07026;
+  color: #ffcf4e;
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.practice {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+}
