@@ -18,4 +18,3 @@ const specialBurgers = [
 
 let specialSection = document.querySelector('#special-burgers')
 specialSection.setAttribute('data-special-burgers', JSON.stringify(specialBurgers))
-
