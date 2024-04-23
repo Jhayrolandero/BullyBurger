@@ -34,7 +34,6 @@ template.innerHTML = `
 </style>
 <section class="burger-section">
     <h4>Special Burger</h4>
-    <p></p>
     <div class="burger-menu">
     </div>
 </section>
@@ -65,7 +64,7 @@ attributeChangedCallback(name, oldValue, newValue) {
 }
 
 
-
+// get the burger data then render it
 renderBurgers(burgersString) {
     let burgers = JSON.parse(burgersString)
     // let burgerArray = burgersString.split(",")

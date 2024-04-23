@@ -151,7 +151,7 @@ body {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
   width: 60%;
   background-color: white;
   height: 60svh;
@@ -248,4 +248,12 @@ body {
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+#overlay.active {
+  display: block;
+}
+#modal.active {
+  transform: translate(-50%, -50%) scale(1);
 }

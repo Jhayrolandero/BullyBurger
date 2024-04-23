@@ -16,5 +16,38 @@ const specialBurgers = [
     }
 ]
 
+const steakBurgers = [
+    {
+        title: 'Steak-Burger',
+        desc: 'Lorem ipsum dolor',
+        price: 3.99
+    }
+]
+
+//  Select the section with ID special-burgers
 let specialSection = document.querySelector('#special-burgers')
+
+// Inject the data to it by set attribute
 specialSection.setAttribute('data-special-burgers', JSON.stringify(specialBurgers))
+
+
+
+// Modal Close button
+
+const closeModalBtn = document.querySelectorAll('[data-close-button]')
+const overlay = document.getElementById('overlay')
+
+
+closeModalBtn.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const modal = btn.closest('#modal')
+        closeModal(modal)
+    })
+})
+
+function closeModal(modal) {
+    if(modal == null) return
+
+    modal.classList.remove('active')
+    overlay.classList.remove('active')
+}
