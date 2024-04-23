@@ -54,13 +54,18 @@ connectedCallback() {
 
 
 static get observedAttributes() {
-    return ['data-special-burgers'];
+    return [
+        'data-special-burgers', 
+        'data-steak-burgers', 
+        'data-mini-burgers',
+        'data-stacked-burgers'
+    ];
 }
 
 attributeChangedCallback(name, oldValue, newValue) {
-    if (name === 'data-special-burgers') {
+    // if (name === 'data-special-burgers') {
         this.renderBurgers(newValue);
-    }
+    // }
 }
 
 

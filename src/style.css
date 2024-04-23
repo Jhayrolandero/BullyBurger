@@ -362,6 +362,11 @@ my-review-box {
   object-fit: cover;
   object-position: 100% center;
 }
+
+.order-btn > a {
+  color: white;
+  text-decoration: none;
+}
 @media (min-width: 1024px) {
   #featured-burger {
     width: 548px;

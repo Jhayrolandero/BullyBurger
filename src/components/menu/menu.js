@@ -12,19 +12,20 @@ template.innerHTML = `
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: start;
+    justify-content: space-between;
+    align-items: space-between;
     gap: 0.5rem;
     padding: 0.5em;
     border-radius: 8px;
+    height: 100%
   }
   
   
   .burger-menu img {
     align-self: center;
-    width: 280px;
+    width: 100%;
     aspect-ratio: 16/9;
-    object-fit: contain;
+
   }
   
   
@@ -48,6 +49,7 @@ template.innerHTML = `
     border-radius: 8px;
     cursor: pointer;
   }
+
 </style>
 <div class="burger-menu">
     <img src="../public/images/burgers/burger-1.svg" alt="burgar">
