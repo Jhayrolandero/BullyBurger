@@ -387,6 +387,19 @@ function burger() {
 }
 const orderState = new burger();
 
+
+function priceState() {
+  let _price = 0
+
+  return {
+    get price() {
+      return _price
+    },
+    set price(value) {
+      const priceDIsplay 
+    }
+  }
+}
 addOrder.addEventListener("click", () => {
   const burgerTitle = document.querySelector(".burger-title").textContent;
   orderState.burgers = burgerTitle;
