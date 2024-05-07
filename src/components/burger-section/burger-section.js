@@ -1,4 +1,4 @@
-import '../menu/menu.js'
+import "../menu/menu.js";
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
@@ -45,47 +45,49 @@ class BurgerSection extends HTMLElement {
 
     var shadow = this.attachShadow({ mode: "open" });
     shadow.append(template.content.cloneNode(true));
-    
-}
+  }
 
-connectedCallback() {
-    this.shadowRoot.querySelector('h4').textContent = this.getAttribute('title')
-}
+  connectedCallback() {
+    this.shadowRoot.querySelector("h4").textContent =
+      this.getAttribute("title");
+  }
 
-
-static get observedAttributes() {
+  static get observedAttributes() {
     return [
-        'data-special-burgers', 
-        'data-steak-burgers', 
-        'data-mini-burgers',
-        'data-stacked-burgers'
+      "data-special-burgers",
+      "data-steak-burgers",
+      "data-mini-burgers",
+      "data-stacked-burgers",
+      "data-smashes-burgers",
+      "data-desserts",
+      "data-sides",
+      "data-drinks",
+      "data-fries",
     ];
-}
+  }
 
-attributeChangedCallback(name, oldValue, newValue) {
+  attributeChangedCallback(name, oldValue, newValue) {
     // if (name === 'data-special-burgers') {
-        this.renderBurgers(newValue);
+    this.renderBurgers(newValue);
     // }
-}
+  }
 
-
-// get the burger data then render it
-renderBurgers(burgersString) {
-    let burgers = JSON.parse(burgersString)
+  // get the burger data then render it
+  renderBurgers(burgersString) {
+    let burgers = JSON.parse(burgersString);
     // let burgerArray = burgersString.split(",")
     // console.log(burgerArray[0])
 
-    const burgerMenuContainer = this.shadowRoot.querySelector('.burger-menu');
+    const burgerMenuContainer = this.shadowRoot.querySelector(".burger-menu");
 
-    burgers.forEach(burger => {
-        const menuItem = document.createElement('my-menu');
-        menuItem.setAttribute('data-burger-title', burger.title);
-        menuItem.setAttribute('data-burger-description', burger.desc);
-        menuItem.setAttribute('data-burger-image', burger.image)
-        burgerMenuContainer.appendChild(menuItem);
+    burgers.forEach((burger) => {
+      const menuItem = document.createElement("my-menu");
+      menuItem.setAttribute("data-burger-title", burger.title);
+      menuItem.setAttribute("data-burger-description", burger.desc);
+      menuItem.setAttribute("data-burger-image", burger.image);
+      burgerMenuContainer.appendChild(menuItem);
     });
-}
-
+  }
 }
 
 customElements.define("my-burger-section", BurgerSection);

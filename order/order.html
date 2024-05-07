@@ -70,19 +70,15 @@
           </button>
           <button class="menu-btn">
             <i class="fa-light fa-burger"></i>
-            <p>Mini Burger</p>
+            <p>Smashed Burgers</p>
           </button>
           <button class="menu-btn">
             <i class="fa-regular fa-burger-cheese"></i>
-            <p>Smashed Burger</p>
-          </button>
-          <button class="menu-btn">
-            <i class="fa-regular fa-ice-cream"></i>
             <p>Desserts</p>
           </button>
           <button class="menu-btn">
-            <i class="fa-sharp fa-light fa-potato"></i>
-            <p>Sides</p>
+            <i class="fa-regular fa-ice-cream"></i>
+            <p>sides</p>
           </button>
           <button class="menu-btn">
             <i class="fa-sharp fa-regular fa-french-fries"></i>
@@ -98,8 +94,9 @@
             <span><i class="fa-light fa-cart-shopping"></i></span>My Order
           </h4>
           <div>
-            <img src="../public/images/cart.svg" alt="" />
-            <p>Cart is Empty</p>
+            <ul id="burger-order-list"></ul>
+            <!-- <img src="../public/images/cart.svg" alt="" />
+            <p>Cart is Empty</p> -->
           </div>
           <button class="button1">Confirm Order</button>
         </div>
@@ -126,62 +123,63 @@
           id="smashed-burgers"
           title="Smashed Burgers"
         ></my-burger-section>
-        <my-burger-section
-          id="onion-burgers"
-          title="Onion Burgers"
-        ></my-burger-section>
-        <my-burger-section
-          id="cheese-burgers"
-          title="Cheese Burgers"
-        ></my-burger-section>
-        <my-burger-section 
-        id="fries" 
-        title="Fries"
-        ></my-burger-section>
-        <my-burger-section 
-        id="drinks" 
-        title="Drinks"
-        ></my-burger-section>
+        <my-burger-section id="desserts" title="Desserts"></my-burger-section>
+        <my-burger-section id="sides" title="sides"></my-burger-section>
+        <my-burger-section id="fries" title="Fries"></my-burger-section>
+        <my-burger-section id="drinks" title="Drinks"></my-burger-section>
       </main>
     </main>
     <div id="modal">
-        <div id="modal-body-1">
-          <img src="../public/images/burgers/burger-2.svg" alt="burger1" class="burger-img">
+      <div id="modal-body-1">
+        <img
+          src="../public/images/burgers/burger-2.svg"
+          alt="burger1"
+          class="burger-img"
+        />
+      </div>
+      <div id="modal-body-2">
+        <div id="modal-heading">
+          <h4 class="burger-title"></h4>
+          <button data-close-button class="btn-close">&times;</button>
         </div>
-        <div id="modal-body-2">
-          <div id="modal-heading">
-            <h4 class="burger-title"></h4>
-            <button data-close-button class="btn-close">&times;</button>
+        <p class="burger-desc"></p>
+        <div id="review-section">
+          <h4>Reviews</h4>
+          <div class="review-box">
+            <div class="profile"></div>
+            <div>
+              <div><h4>John Doe</h4></div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Exercitationem, placeat.
+              </p>
+            </div>
           </div>
-          <p class="burger-desc"></p>
-          <div id="review-section">
-            <h4>Reviews</h4>
-              <div class="review-box">
-                <div class="profile"></div>
-                <div>
-                  <div><h4>John Doe</h4></div>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, placeat.</p>
-                </div>
-              </div>
-              <div class="review-box">
-                <div class="profile"></div>
-                <div>
-                  <div><h4>John Doe</h4></div>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, placeat.</p>
-                </div>
-              </div>
-              <div class="review-box">
-                <div class="profile"></div>
-                <div>
-                  <div><h4>John Doe</h4></div>
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem, placeat.</p>
-                </div>
-              </div>
+          <div class="review-box">
+            <div class="profile"></div>
+            <div>
+              <div><h4>John Doe</h4></div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Exercitationem, placeat.
+              </p>
+            </div>
           </div>
-          <!-- <div class="order-div">
-            <button>Order Now</button>
-          </div> -->
+          <div class="review-box">
+            <div class="profile"></div>
+            <div>
+              <div><h4>John Doe</h4></div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Exercitationem, placeat.
+              </p>
+            </div>
+          </div>
         </div>
+        <div class="order-div">
+          <button id="add-order">Order Now</button>
+        </div>
+      </div>
     </div>
     <div id="overlay"></div>
   </body>
