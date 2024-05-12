@@ -75,6 +75,8 @@ class Menu extends HTMLElement {
       "data-burger-title",
       "data-burger-description",
       "data-burger-image",
+      "data-burger-price",
+      "data-burger-id",
     ];
   }
 
@@ -89,15 +91,25 @@ class Menu extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     console.log(name);
 
+    const burgerMenu = this.shadowRoot.querySelector(".burger-menu");
     switch (name) {
       case "data-burger-title":
+        burgerMenu.setAttribute("data-menu-title", newValue);
         this.shadowRoot.querySelector("h4").textContent = newValue;
         break;
       case "data-burger-description":
+        burgerMenu.setAttribute("data-menu-desc", newValue);
         this.shadowRoot.querySelector("p").textContent = newValue;
         break;
       case "data-burger-image":
+        burgerMenu.setAttribute("data-menu-img", newValue);
         this.shadowRoot.querySelector("img").src = newValue;
+      case "data-burger-price":
+        burgerMenu.setAttribute("data-menu-price", newValue);
+        break;
+      case "data-burger-id":
+        burgerMenu.setAttribute("id", newValue);
+        burgerMenu.setAttribute("data-menu-id", newValue);
         break;
     }
   }
@@ -105,14 +117,23 @@ class Menu extends HTMLElement {
   openModal(modal, overlay) {
     if (modal == null) return;
 
+    const burgerMenu = this.shadowRoot.querySelector(".burger-menu");
+
+    const burgerMenuID = burgerMenu.dataset.menuId;
     modal.querySelector(".burger-title").textContent =
       this.shadowRoot.querySelector("h4").innerHTML;
     modal.querySelector(".burger-desc").textContent =
       this.shadowRoot.querySelector("p").innerHTML;
     modal.querySelector(".burger-img").src =
       this.shadowRoot.querySelector("img").src;
+    modal.querySelector(".order-price").innerHTML =
+      this.shadowRoot.querySelector(".burger-menu").dataset.menuPrice;
+    modal.setAttribute("data-modal-id", burgerMenuID);
+
+    modal.setAttribute("data-modal-title", burgerMenu.dataset.menuTitle);
 
     modal.classList.add("active");
+    modal.classList.add(burgerMenuID);
     overlay.classList.add("active");
   }
 }

@@ -85,6 +85,8 @@ class BurgerSection extends HTMLElement {
       menuItem.setAttribute("data-burger-title", burger.title);
       menuItem.setAttribute("data-burger-description", burger.desc);
       menuItem.setAttribute("data-burger-image", burger.image);
+      menuItem.setAttribute("data-burger-price", burger.price);
+      menuItem.setAttribute("data-burger-id", burger.id);
       burgerMenuContainer.appendChild(menuItem);
     });
   }
