@@ -17,7 +17,6 @@
   filter: blur(0px);
 }
 
-
 my-review-box:nth-child(1) {
   transition-delay: 100ms;
 }
@@ -53,8 +52,8 @@ section {
   background-size: cover;
   overflow-y: hidden;
   position: relative;
+  overflow-x: hidden;
 }
-
 
 #navbar {
   position: fixed;

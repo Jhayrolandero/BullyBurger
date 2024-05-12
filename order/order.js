@@ -342,6 +342,13 @@ function closeModal(modal) {
   overlay.classList.remove("active");
 }
 
+overlay.addEventListener("click", () => {
+  const modal = document.querySelector("#modal");
+
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
 const burgerOrderDisplay = document.querySelector("#burger-order-list");
 const addOrder = document.querySelector("#add-order");
 
@@ -354,6 +361,7 @@ function burger() {
     },
 
     set burgers(value) {
+      const burgerName = value;
       const burgerID = value.replace(/\W/g, "");
 
       if (_burgers.has(burgerID)) {
@@ -361,11 +369,11 @@ function burger() {
         console.log(_burgers);
 
         const currList = document.querySelector(`#${burgerID}`);
-        currList.textContent = `${burgerID} - ${_burgers.get(burgerID)} `;
+        currList.textContent = `${burgerName} - ${_burgers.get(burgerID)} `;
       } else {
         _burgers.set(burgerID, 1);
         const burgerList = document.createElement("li");
-        burgerList.textContent = `${burgerID} - ${_burgers.get(burgerID)} `;
+        burgerList.textContent = `${burgerName} - ${_burgers.get(burgerID)} `;
         burgerList.setAttribute("id", burgerID);
         burgerOrderDisplay.appendChild(burgerList);
       }
@@ -387,18 +395,17 @@ function burger() {
 }
 const orderState = new burger();
 
-
 function priceState() {
-  let _price = 0
+  let _price = 0;
 
   return {
     get price() {
-      return _price
+      return _price;
     },
     set price(value) {
-      const priceDIsplay 
-    }
-  }
+      // const priceDIsplay
+    },
+  };
 }
 addOrder.addEventListener("click", () => {
   const burgerTitle = document.querySelector(".burger-title").textContent;

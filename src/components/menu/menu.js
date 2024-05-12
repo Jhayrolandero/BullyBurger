@@ -37,7 +37,9 @@ template.innerHTML = `
     width: 100%;
     max-height: 20px;
     overflow: hidden;
-    text-overflow: ellipsis; 
+    text-overflow: ellipsis;
+    font-weight: 400;
+    font-size: 0.8rem;
   }
   .orderBTN {
     width: 100%;
@@ -69,45 +71,50 @@ class Menu extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ['data-burger-title', 'data-burger-description', 'data-burger-image'];
+    return [
+      "data-burger-title",
+      "data-burger-description",
+      "data-burger-image",
+    ];
   }
 
   connectedCallback() {
-    this.shadowRoot.querySelector('button').addEventListener('click', () => {
-      const modal = document.getElementById('modal')
-      const overlay = document.getElementById('overlay')
-
-      this.openModal(modal, overlay)
-    })
+    this.shadowRoot.querySelector("button").addEventListener("click", () => {
+      const modal = document.getElementById("modal");
+      const overlay = document.getElementById("overlay");
+      this.openModal(modal, overlay);
+    });
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(name)
+    console.log(name);
 
-    switch(name) {
-      case 'data-burger-title':
-        this.shadowRoot.querySelector("h4").textContent = newValue
-        break
-      case 'data-burger-description':
-        this.shadowRoot.querySelector("p").textContent = newValue
-        break
-      case 'data-burger-image':
-        this.shadowRoot.querySelector("img").src = newValue
-        break;  
-      }
+    switch (name) {
+      case "data-burger-title":
+        this.shadowRoot.querySelector("h4").textContent = newValue;
+        break;
+      case "data-burger-description":
+        this.shadowRoot.querySelector("p").textContent = newValue;
+        break;
+      case "data-burger-image":
+        this.shadowRoot.querySelector("img").src = newValue;
+        break;
+    }
   }
 
   openModal(modal, overlay) {
-    if(modal == null) return
+    if (modal == null) return;
 
-    modal.querySelector('.burger-title').textContent = this.shadowRoot.querySelector("h4").innerHTML
-    modal.querySelector('.burger-desc').textContent = this.shadowRoot.querySelector("p").innerHTML
-    modal.querySelector('.burger-img').src = this.shadowRoot.querySelector("img").src
+    modal.querySelector(".burger-title").textContent =
+      this.shadowRoot.querySelector("h4").innerHTML;
+    modal.querySelector(".burger-desc").textContent =
+      this.shadowRoot.querySelector("p").innerHTML;
+    modal.querySelector(".burger-img").src =
+      this.shadowRoot.querySelector("img").src;
 
-    modal.classList.add('active')
-    overlay.classList.add('active')
+    modal.classList.add("active");
+    overlay.classList.add("active");
   }
-
 }
 
 customElements.define("my-menu", Menu);
