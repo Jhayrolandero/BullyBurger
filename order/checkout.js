@@ -11,15 +11,18 @@ const shippingTotal = document.querySelector("#shippingCost");
 let modeDelivery = "pickup";
 
 const pickUpmode = document
-  .querySelector("#pickUP")
+  .querySelector("#pick")
   .addEventListener("click", () => {
     modeDelivery = "pickup";
+
+    console.log(modeDelivery);
   });
 
 const deliverymode = document
   .querySelector("#deliver")
   .addEventListener("click", () => {
     modeDelivery = "deliver";
+    console.log(modeDelivery);
   });
 
 function renderCart() {
@@ -74,5 +77,42 @@ function computeShippingCost(quantity) {
 function computeTotalCost(cost, tax, shipping) {
   return cost + tax + shipping;
 }
+const modal = document.querySelector("#modal");
+const overlay = document.querySelector("#overlay");
 
+const checkoutBTN = document
+  .querySelector(".checkout-btn")
+  .addEventListener("click", () => {
+    openModal(modal, overlay);
+  });
 renderCart();
+
+document.querySelector(".close-btn").addEventListener("click", () => {
+  closeModal(modal, overlay);
+});
+
+overlay.addEventListener("click", () => {
+  closeModal(modal, overlay);
+});
+
+document.querySelector("#confirm-btn-no").addEventListener("click", () => {
+  closeModal(modal, overlay);
+});
+
+document.querySelector("#confirm-btn-yes").addEventListener("click", () => {
+  closeModal(modal, overlay);
+});
+
+function closeModal(modal, overlay) {
+  if (modal == null || overlay == null) return;
+
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+function openModal(modal, overlay) {
+  if (modal == null || overlay == null) return;
+
+  modal.classList.add("active");
+  overlay.classList.add("active");
+}

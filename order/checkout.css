@@ -98,7 +98,10 @@ body {
 
 .mode {
   display: flex;
+  justify-content: space-between;
   gap: 1rem;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5em;
 }
 .mode > button {
   width: 50%;
@@ -119,6 +122,10 @@ body {
   border: 1px solid black;
   border-radius: 0.5em;
   font-size: 1.25rem;
+}
+
+#delivery-title {
+  font-size: 1.5rem;
 }
 
 .checkout-btn {
@@ -161,6 +168,111 @@ body {
   font-size: 1rem;
   padding: 0.5rem;
   border: none;
+}
+
+.delivery-choice {
+  display: none;
+}
+
+.deliver-label {
+  background-color: white;
+  border: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  font-size: 1.25rem;
+  width: 100%;
+  text-align: center;
+}
+
+#pick:checked + label,
+#deliver:checked + label {
+  border: #d07026 2px solid;
+  font-weight: bold; /* Example: Make the text bold */
+}
+
+#modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 60%;
+  background-color: white;
+  /* height: 60svh; */
+  height: 320px;
+  max-width: 480px;
+  border-radius: 1rem;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+}
+
+#modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#overlay.active {
+  display: block;
+}
+
+#modal-heading {
+  min-height: max-content;
+  width: 100%;
+  background-color: #d07026;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  padding: 0.5em;
+  display: flex;
+  justify-content: space-between;
+}
+
+#modal-heading > button {
+  background-color: transparent;
+  border: none;
+  color: #ffcf4e;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#modal-content {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.3rem;
+  gap: 1.5rem;
+}
+#modal-heading > h4 {
+  font-size: 1.25rem;
+  color: #ffcf4e;
+}
+
+#overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.confirm-btn {
+  background-color: white;
+  border: 1px solid black;
+  padding: 1em 2em;
+  cursor: pointer;
+  border-radius: 0.5em;
+  font-weight: 600;
+}
+
+.btn-container {
+  display: flex;
+  gap: 1rem;
 }
 @media (min-width: 768px) {
 }

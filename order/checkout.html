@@ -50,14 +50,33 @@
       <section class="cart-container">
         <div class="cart"></div>
         <div class="cart-summary">
+          <h4 id="delivery-title">Deliver Mode</h4>
           <div class="mode">
-            <button class="delivery-btn" id="pickUP">
-              <i class="fa-solid fa-store"></i>
-              Pick-up</button
-            ><button class="delivery-btn" id="deliver">
-              <i class="fa-solid fa-moped"></i>
-              Delivery
-            </button>
+            <input
+              type="radio"
+              id="pick"
+              name="delivery_mode"
+              value="pickup"
+              class="delivery-choice"
+            />
+             
+            <label for="pick" class="deliver-label">
+              <i class="fa-solid fa-store"></i> Pick Up</label
+            >
+             
+
+            <input
+              type="radio"
+              id="deliver"
+              name="delivery_mode"
+              value="deliver"
+              class="delivery-choice"
+            />
+             
+            <label for="deliver" class="deliver-label">
+              <i class="fa-solid fa-moped"></i> Deliver</label
+            >
+             
           </div>
           <div class="promo-div">
             <h4>Promotions</h4>
@@ -78,5 +97,20 @@
         </div>
       </section>
     </div>
+
+    <div id="modal">
+      <div id="modal-heading">
+        <h4>Order Confirmation</h4>
+        <button class="close-btn">X</button>
+      </div>
+      <div id="modal-content">
+        <h4>Are you sure you want to continue?</h4>
+        <div class="btn-container">
+          <button class="confirm-btn" id="confirm-btn-yes">Yes</button
+          ><button class="confirm-btn" id="confirm-btn-no">No</button>
+        </div>
+      </div>
+    </div>
+    <div id="overlay"></div>
   </body>
 </html>
