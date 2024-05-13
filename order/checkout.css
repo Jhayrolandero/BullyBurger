@@ -9,7 +9,7 @@
 body {
   font-family: "Luckiest Guy", cursive;
   background-color: black;
-  color: white;
+  color: black;
 }
 
 /* .container {
@@ -31,9 +31,12 @@ body {
   height: 100svh;
   width: 100%;
   flex-direction: column;
+  background-color: #f5f5f5;
 }
-h4 {
+#order-title {
   font-size: 2rem;
+  border-bottom: 1px solid black;
+  margin-bottom: 2.5rem;
 }
 
 /* @media (min-width: 320px) {
@@ -93,6 +96,72 @@ h4 {
   flex-direction: column;
 }
 
+.mode {
+  display: flex;
+  gap: 1rem;
+}
+.mode > button {
+  width: 50%;
+}
+
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.delivery-btn {
+  background-color: white;
+  border: none;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 0.5em;
+  font-size: 1.25rem;
+}
+
+.checkout-btn {
+  width: auto;
+  border: none;
+  background-color: #d07026;
+  color: #ffcf4e;
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 5rem;
+  font-weight: bold;
+}
+
+.promo-div {
+  border-bottom: 1px solid black;
+  padding-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.promo-div > h4 {
+  font-size: 1.5rem;
+}
+.promo-div > div {
+  display: flex;
+  flex-direction: row;
+}
+
+#promo-input {
+  border: 1px solid black;
+  padding: 0.5rem;
+  flex: 1;
+}
+
+#promo-btn {
+  background-color: #d07026;
+  color: #ffcf4e;
+  font-size: 1rem;
+  padding: 0.5rem;
+  border: none;
+}
 @media (min-width: 768px) {
 }
 

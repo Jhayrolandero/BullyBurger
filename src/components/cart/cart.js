@@ -9,7 +9,7 @@ h4 {
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    border: 1px solid white;
+    border-bottom: 1px solid black;
     padding: 0.5rem;
   }
   
@@ -62,13 +62,13 @@ class CartOrder extends HTMLElement {
   connectedCallback() {
     this.shadowRoot.querySelector("h4").textContent = this.dataset.burgerName;
     this.shadowRoot.querySelector("#price").textContent =
-      "₱" + this.dataset.burgerPrice;
+      "₱" + Number(this.dataset.burgerPrice).toFixed(2);
     this.shadowRoot.querySelector("#quantity").textContent =
       this.dataset.burgerQuantity;
     this.shadowRoot.querySelector("#burger-id").textContent =
       this.dataset.burgerId;
     this.shadowRoot.querySelector("#total").textContent =
-      "₱" + this.dataset.burgerTotal;
+      "₱" + Number(this.dataset.burgerTotal).toFixed(2);
   }
 
   //   static get observedAttributes() {

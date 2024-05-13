@@ -4,6 +4,35 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="../public/images/favicon.ico" />
     <link rel="stylesheet" href="./checkout.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora&family=Luckiest+Guy&family=Pixelify+Sans:wght@600&family=Ubuntu:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/all.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-thin.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-solid.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-regular.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://site-assets.fontawesome.com/releases/v6.5.1/css/sharp-light.css"
+    />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script type="module" src="./checkout.js" defer></script>
@@ -15,17 +44,34 @@
     </nav>
 
     <div class="container">
-      <h4>Your Order</h4>
+      <h4 id="order-title">Your Order</h4>
       <section class="cart-container">
         <div class="cart"></div>
         <div class="cart-summary">
           <div class="mode">
-            <button>Pick-up</button><button>Delivery</button>
+            <button class="delivery-btn" id="pickUP">
+              <i class="fa-solid fa-store"></i>
+              Pick-up</button
+            ><button class="delivery-btn" id="deliver">
+              <i class="fa-solid fa-moped"></i>
+              Delivery
+            </button>
           </div>
-          <div>Subtotal <span>69</span></div>
-          <div>Shopping Cost <span>69</span></div>
-          <div>Estimated Sales Tax <span>69</span></div>
-          <div>Estimated Total <span>69</span></div>
+          <div class="promo-div">
+            <h4>Promotions</h4>
+            <p>Free Shipping for items over 10!</p>
+            <div>
+              <input
+                type="text"
+                placeholder="Enter Promo Code"
+                id="promo-input"
+              /><input type="submit" id="promo-btn" />
+            </div>
+          </div>
+          <div>Subtotal <span id="subtotal"></span></div>
+          <div>Shipping Cost <span id="shippingCost"></span></div>
+          <div>Estimated Sales Tax <span id="sales-tax"></span></div>
+          <div>Estimated Total <span id="total-cost"></span></div>
           <button class="checkout-btn">Checkout</button>
         </div>
       </section>
