@@ -411,6 +411,55 @@ function factoryRemoveButton(burgerList, _burgers, burger_ID) {
   return { removeButton, newBurgerList };
 }
 
+function factoryOrderList(
+  burgerID,
+  burgerQuantity,
+  burgerName,
+  burgerPrice,
+  parentID
+) {
+  const parent = document.getElementById(parentID);
+  const child = document.getElementById(burgerID);
+
+  // Check if the list exist then remove it
+  if (child) {
+    parent.removeChild(child);
+  }
+
+  const burgerList = document.createElement("li");
+  // Create a list element
+
+  // set ID
+  burgerList.setAttribute("id", burgerID);
+  burgerList.classList.add("order-list-item");
+  // Create DIV within list
+  const burgerDiv = document.createElement("div");
+  burgerDiv.classList.add("order-list-div");
+
+  // Create a text node to display the burger name and quantity
+  // const burgerText = document.createTextNode(
+  //   `${burgerQuantity}X ${burgerName}`
+  // );
+
+  const burgerText = document.createElement("p");
+  burgerText.innerHTML = `${burgerQuantity}X `;
+
+  const titleSpan = document.createElement("span");
+  titleSpan.innerHTML = burgerName;
+  titleSpan.classList.add("order-list-title");
+
+  burgerText.appendChild(titleSpan);
+  const burgerPriceSpan = document.createElement("span");
+  burgerPriceSpan.innerHTML = `₱${burgerPrice}`;
+
+  burgerDiv.appendChild(burgerText);
+  burgerDiv.appendChild(burgerPriceSpan);
+
+  burgerList.appendChild(burgerDiv);
+
+  return burgerList;
+}
+
 function burger() {
   let _burgers = new Map();
 
@@ -425,6 +474,7 @@ function burger() {
       const burgerPrice = Number(value.price);
       const burgerQuantity = Number(value.quantity);
       const burgerID = value.title.replace(/\W/g, "");
+      console.log(value);
 
       if (_burgers.has(burgerID)) {
         // Get the existing burger details
@@ -440,38 +490,38 @@ function burger() {
         // Set the new list of burger
         _burgers.set(burgerID, existingBurger);
 
-        const currList = document.querySelector(`#${burgerID}`);
-        currList.textContent = `${
-          existingBurger.quantity
-        }X  ${burgerName}\n ₱ ${existingBurger.price.toFixed(2)}`;
+        const burgerList = factoryOrderList(
+          burgerID,
+          existingBurger.quantity,
+          burgerName,
+          existingBurger.price.toFixed(2),
+          "burger-order-list"
+        );
 
-        // Call the factory remove button to make a remove button
         const { removeButton, newBurgerList } = factoryRemoveButton(
-          currList,
+          burgerList,
           _burgers,
           burgerID
         );
 
-        // Update the _burgers map with the newBurgerList returned from factoryRemoveButton
+        // // Update the _burgers map with the newBurgerList returned from factoryRemoveButton
         _burgers = newBurgerList;
 
-        // Append the text node and remove button to the list item
-        currList.appendChild(removeButton);
+        burgerList.appendChild(removeButton);
+        burgerOrderDisplay.appendChild(burgerList);
       } else {
-        // _burgers.set(burgerID, 1);
+        // Set the burger into hashmap
         _burgers.set(burgerID, {
           quantity: burgerQuantity,
           price: burgerPrice,
         });
-        // Create a list element
-        const burgerList = document.createElement("li");
 
-        // set ID
-        burgerList.setAttribute("id", burgerID);
-
-        // Create a text node to display the burger name and quantity
-        const burgerText = document.createTextNode(
-          `${burgerQuantity}X ${burgerName} \n ₱ ${burgerPrice.toFixed(2)}`
+        const burgerList = factoryOrderList(
+          burgerID,
+          burgerQuantity,
+          burgerName,
+          burgerPrice.toFixed(2),
+          "burger-order-list"
         );
 
         const { removeButton, newBurgerList } = factoryRemoveButton(
@@ -482,9 +532,11 @@ function burger() {
 
         _burgers = newBurgerList;
         // Append the text node and remove button to the list item
-        burgerList.appendChild(burgerText);
-        burgerList.appendChild(removeButton);
+        // burgerDiv.appendChild(burgerText);
+        // burgerDiv.appendChild(burgerPriceSpan);
+        // burgerList.appendChild(burgerDiv);
 
+        burgerList.appendChild(removeButton);
         burgerOrderDisplay.appendChild(burgerList);
       }
     },
@@ -541,7 +593,7 @@ function orderQuantity() {
 }
 const orderQuantityState = new orderQuantity();
 
-function closeModal(modal) {
+function closeModal(modal, overlay) {
   if (modal == null) return;
 
   // reset
@@ -550,15 +602,15 @@ function closeModal(modal) {
   overlay.classList.remove("active");
 }
 
-overlay.addEventListener("click", () => {
+overlay.addEventListener("click", () => closeOverlay(overlay));
+
+function closeOverlay(overlay) {
   const modal = document.querySelector("#modal");
 
-  // reset
   orderQuantityState.reset();
   modal.classList.remove("active");
   overlay.classList.remove("active");
-});
-
+}
 const decrementQuantity = document.querySelector("#quantityDecrement");
 const incrementQuantity = document.querySelector("#quantityIncrement");
 
@@ -586,6 +638,7 @@ incrementQuantity.addEventListener("click", () => {
 
 addOrder.addEventListener("click", () => {
   const burgerMenu = document.querySelector("#modal");
+
   const burgerID = burgerMenu.dataset.modalId;
   const burgerOBJ = document.querySelector(`.${burgerID}`);
 
@@ -603,4 +656,7 @@ addOrder.addEventListener("click", () => {
     price: _burgerPrice,
     quantity: _burgerQuantity,
   };
+
+  closeModal(burgerMenu, overlay);
+  closeOverlay(burgerMenu, overlay);
 });
