@@ -473,8 +473,8 @@ function burger() {
       const burgerName = value.title;
       const burgerPrice = Number(value.price);
       const burgerQuantity = Number(value.quantity);
-      const burgerID = value.title.replace(/\W/g, "");
-      console.log(value);
+      const burgerID = value.ID;
+      // const burgerID = value.title.replace(/\W/g, "");
 
       if (_burgers.has(burgerID)) {
         // Get the existing burger details
@@ -482,7 +482,6 @@ function burger() {
 
         // Increment the quantity by 1
         existingBurger.quantity += burgerQuantity;
-        // existingBurger.quantity += 1;
 
         // Calculate the new total price by adding the burgerPrice to the existing total price
         existingBurger.price += burgerPrice;
@@ -512,6 +511,7 @@ function burger() {
       } else {
         // Set the burger into hashmap
         _burgers.set(burgerID, {
+          title: burgerName,
           quantity: burgerQuantity,
           price: burgerPrice,
         });
@@ -531,10 +531,6 @@ function burger() {
         );
 
         _burgers = newBurgerList;
-        // Append the text node and remove button to the list item
-        // burgerDiv.appendChild(burgerText);
-        // burgerDiv.appendChild(burgerPriceSpan);
-        // burgerList.appendChild(burgerDiv);
 
         burgerList.appendChild(removeButton);
         burgerOrderDisplay.appendChild(burgerList);
@@ -652,10 +648,20 @@ addOrder.addEventListener("click", () => {
 
   console.log(_burgerPrice, burgerPrice);
   orderState.burgers = {
+    ID: burgerID,
     title: burgerTitle,
     price: _burgerPrice,
     quantity: _burgerQuantity,
   };
+
+  const burgerOrder = orderState.burgers;
+  // Save the burger order
+
+  // convert it into array
+  const mapEntriesArray = Array.from(burgerOrder);
+
+  // Save to local storage
+  localStorage.setItem("burgers", JSON.stringify(mapEntriesArray));
 
   closeModal(burgerMenu, overlay);
   closeOverlay(burgerMenu, overlay);

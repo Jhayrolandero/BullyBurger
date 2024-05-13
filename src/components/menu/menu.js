@@ -90,8 +90,6 @@ class Menu extends HTMLElement {
 
   // Observer
   attributeChangedCallback(name, oldValue, newValue) {
-    console.log(name);
-
     const burgerMenu = this.shadowRoot.querySelector(".burger-menu");
     switch (name) {
       case "data-burger-title":
