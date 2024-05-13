@@ -297,3 +297,11 @@ body {
 #burger-order-list {
   list-style: none;
 }
+
+.delete-order {
+  background: none;
+  color: red;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}

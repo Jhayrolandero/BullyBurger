@@ -398,6 +398,32 @@ overlay.addEventListener("click", () => {
 const burgerOrderDisplay = document.querySelector("#burger-order-list");
 const addOrder = document.querySelector("#add-order");
 
+function factoryRemoveButton(burgerList, _burgers, burger_ID) {
+  // Create a new Map to hold the updated burger list
+  const newBurgerList = new Map(_burgers);
+
+  // Create a button element for removing the burger item
+  const removeButton = document.createElement("button");
+  removeButton.classList.add("delete-order");
+
+  const trashIcon = document.createElement("i");
+  trashIcon.classList.add("fa-solid");
+  trashIcon.classList.add("fa-trash-can");
+
+  removeButton.appendChild(trashIcon);
+
+  // Add a click event listener to the remove button
+  removeButton.addEventListener("click", () => {
+    // Remove the burger item from the display
+    burgerList.parentNode.removeChild(burgerList);
+
+    // Remove the burger item from the new burger list map
+    newBurgerList.delete(burger_ID);
+  });
+
+  return { removeButton, newBurgerList };
+}
+
 function burger() {
   let _burgers = new Map();
 
@@ -407,31 +433,48 @@ function burger() {
     },
 
     set burgers(value) {
-      const burgerName = value;
-      const burgerID = value.replace(/\W/g, "");
+      // const burgerMap = _burgers
+      const burgerName = value.title;
+      const burgerPrice = Number(value.price);
+      const burgerID = value.title.replace(/\W/g, "");
 
       if (_burgers.has(burgerID)) {
-        _burgers.set(burgerID, _burgers.get(burgerID) + 1);
+        // Get the existing burger details
+        const existingBurger = _burgers.get(burgerID);
+
+        // Increment the quantity by 1
+        existingBurger.quantity += 1;
+
+        // Calculate the new total price by adding the burgerPrice to the existing total price
+        existingBurger.price += burgerPrice;
+
+        _burgers.set(burgerID, existingBurger);
         console.log(_burgers);
 
         const currList = document.querySelector(`#${burgerID}`);
-        currList.textContent = `${burgerName} - ${_burgers.get(burgerID)} `;
+        currList.textContent = `${
+          existingBurger.quantity
+        }X  ${burgerName}\n ₱ ${existingBurger.price.toFixed(2)}`;
+        // currList.textContent = `${_burgers.get(burgerID).quantity}X  ${burgerName}\n ${}`;
 
-        // Create a button element (<button>) for removing the burger item
-        const removeButton = document.createElement("button");
-        removeButton.textContent = "X";
+        // Call the factory remove button to make a remove button
+        const { removeButton, newBurgerList } = factoryRemoveButton(
+          currList,
+          _burgers,
+          burgerID
+        );
 
-        // Add a click event listener to the remove button
-        removeButton.addEventListener("click", () => {
-          // Remove the burger item from the display and the _burgers map
-          burgerOrderDisplay.removeChild(currList);
-          _burgers.delete(burgerID);
-        });
+        // Update the _burgers map with the newBurgerList returned from factoryRemoveButton
+        _burgers = newBurgerList;
 
         // Append the text node and remove button to the list item
         currList.appendChild(removeButton);
       } else {
-        _burgers.set(burgerID, 1);
+        // _burgers.set(burgerID, 1);
+        _burgers.set(burgerID, {
+          quantity: 1,
+          price: burgerPrice,
+        });
         // Create a list element
         const burgerList = document.createElement("li");
 
@@ -440,20 +483,24 @@ function burger() {
 
         // Create a text node to display the burger name and quantity
         const burgerText = document.createTextNode(
-          `${burgerName} - ${_burgers.get(burgerID)}`
+          `${_burgers.get(burgerID).quantity}X ${burgerName} \n ₱ ${_burgers
+            .get(burgerID)
+            .price.toFixed(2)}`
+        );
+        // const burgerText = document.createTextNode(
+        //   `${_burgers.get(burgerID)}X ${burgerName}}`
+        // );
+
+        // currList.textContent = `${existingBurger.quantity}X  ${burgerName}\n ${existingBurger.price}`;
+        // currList.textContent = `${_burgers.get(burgerID).quantity}X  ${burgerName}\n ${}`;
+
+        const { removeButton, newBurgerList } = factoryRemoveButton(
+          burgerList,
+          _burgers,
+          burgerID
         );
 
-        // Create a button element (<button>) for removing the burger item
-        const removeButton = document.createElement("button");
-        removeButton.textContent = "X";
-
-        // Add a click event listener to the remove button
-        removeButton.addEventListener("click", () => {
-          // Remove the burger item from the display and the _burgers map
-          burgerOrderDisplay.removeChild(burgerList);
-          _burgers.delete(burgerID);
-        });
-
+        _burgers = newBurgerList;
         // Append the text node and remove button to the list item
         burgerList.appendChild(burgerText);
         burgerList.appendChild(removeButton);
@@ -482,6 +529,12 @@ addOrder.addEventListener("click", () => {
 
   const burgerID = burgerMenu.dataset.modalId;
 
-  const burgerTitle = document.querySelector(`.${burgerID}`).dataset.modalTitle;
-  orderState.burgers = burgerTitle;
+  const burgerOBJ = document.querySelector(`.${burgerID}`);
+  const burgerTitle = burgerOBJ.dataset.modalTitle;
+  const burgerPrice = burgerOBJ.dataset.modalPrice;
+
+  orderState.burgers = {
+    title: burgerTitle,
+    price: burgerPrice,
+  };
 });

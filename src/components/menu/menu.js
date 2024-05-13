@@ -131,6 +131,7 @@ class Menu extends HTMLElement {
     modal.setAttribute("data-modal-id", burgerMenuID);
 
     modal.setAttribute("data-modal-title", burgerMenu.dataset.menuTitle);
+    modal.setAttribute("data-modal-price", burgerMenu.dataset.menuPrice);
 
     modal.classList.add("active");
     modal.classList.add(burgerMenuID);
