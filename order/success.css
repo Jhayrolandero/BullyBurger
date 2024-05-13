@@ -80,3 +80,12 @@ h4 {
 .summary-info > p {
   text-align: start;
 }
+
+#qr-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}

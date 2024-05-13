@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./success.css" />
+    <script defer src="./success.js"></script>
   </head>
   <body>
     <nav id="navbar">
@@ -17,39 +18,43 @@
         <h4>Thanks a bunch from Bully Burger!</h4>
         <p>We appreciate your support and hope you love every bite!</p>
         <p>Your tasty meal is on its way</p>
-        <img
-          src="../public/images/Rickrolling_QR_code.png"
-          alt=""
-          width="296px"
-          height="296px"
-        />
+
+        <div id="qr-container">
+          <img
+            src="../public/images/Rickrolling_QR_code.png"
+            alt=""
+            width="296px"
+            height="296px"
+          />
+          <p>Save this QR</p>
+        </div>
       </div>
       <div class="content" id="body-2">
         <section>
           <h4>Order summary</h4>
           <div class="summary-info">
             <p>Order ID</p>
-            <span>23</span>
+            <span id="orderID">23</span>
           </div>
           <div class="summary-info">
             <p>Order Date</p>
-            <span></span>
+            <span id="orderDate"></span>
           </div>
           <div class="summary-info">
             <p>Subtotal</p>
-            <span></span>
+            <span id="sub"></span>
           </div>
           <div class="summary-info">
-            <p>Shopping Cost</p>
-            <span></span>
+            <p>Shipping Cost</p>
+            <span id="shipping"></span>
           </div>
           <div class="summary-info">
             <p>Estimated Sales tax</p>
-            <span></span>
+            <span id="tax"></span>
           </div>
           <div class="summary-info">
             <p>Estimateed Total</p>
-            <span></span>
+            <span id="total"></span>
           </div>
           <button>Go Back ></button>
         </section>

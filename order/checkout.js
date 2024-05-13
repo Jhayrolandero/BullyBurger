@@ -2,6 +2,9 @@ import "../src\\components\\cart\\cart.js";
 
 let cost = 0;
 let quantity = 0;
+let tax = 0;
+let shippingCost = 0;
+let total = 0;
 const cartCont = document.querySelector(".cart");
 const totalCost = document.querySelector("#total-cost");
 const saleTax = document.querySelector("#sales-tax");
@@ -43,9 +46,9 @@ function renderCart() {
     cartCont.appendChild(cart);
     console.log(element[1].quantity);
   });
-  const tax = computeTax(cost, 0.05);
-  const shippingCost = computeShippingCost(quantity);
-  const total = computeTotalCost(cost, tax, shippingCost);
+  tax = computeTax(cost, 0.05);
+  shippingCost = computeShippingCost(quantity);
+  total = computeTotalCost(cost, tax, shippingCost);
 
   subTotal.innerHTML = "₱" + cost.toFixed(2);
   saleTax.innerHTML = "₱" + tax.toFixed(2);
@@ -101,6 +104,25 @@ document.querySelector("#confirm-btn-no").addEventListener("click", () => {
 
 document.querySelector("#confirm-btn-yes").addEventListener("click", () => {
   closeModal(modal, overlay);
+
+  const randomID = generateRandomID(8);
+
+  const date = formattedDate();
+  const orderJSON = {
+    cost,
+    tax,
+    shippingCost,
+    total,
+    orderID: randomID,
+    orderDate: date,
+  };
+
+  if (JSON.parse(localStorage.getItem("order-summary")) != null) {
+    localStorage.removeItem("order-summary");
+  }
+
+  localStorage.setItem("order-summary", JSON.stringify(orderJSON));
+  console.log(JSON.parse(localStorage.getItem("order-summary")));
 });
 
 function closeModal(modal, overlay) {
@@ -115,4 +137,33 @@ function openModal(modal, overlay) {
 
   modal.classList.add("active");
   overlay.classList.add("active");
+}
+
+function generateRandomID(length) {
+  const chars =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  let result = "";
+  for (let i = 0; i < length; i++) {
+    result += chars.charAt(Math.floor(Math.random() * chars.length));
+  }
+  return result;
+}
+
+function formattedDate() {
+  // Create a new Date object representing the current date and time
+  const currentDate = new Date();
+
+  // Get the current year
+  const year = currentDate.getFullYear(); // e.g., 2023
+
+  // Get the current month (0-based index, where 0 = January, 1 = February, ..., 11 = December)
+  const month = currentDate.getMonth(); // e.g., 4 (represents May, because months are zero-based)
+
+  // Get the current day of the month (1-31)
+  const day = currentDate.getDate(); // e.g., 1 (represents the 1st day of the month)
+
+  // Format the date as "MM/DD/YYYY"
+  const formattedDate = `${month + 1}/${day}/${year}`;
+
+  return formattedDate;
 }
