@@ -73,45 +73,6 @@ class CartOrder extends HTMLElement {
       "₱" + Number(this.dataset.burgerTotal).toFixed(2);
     this.shadowRoot.querySelector("#burger-img").src = this.dataset.burgerImg;
   }
-
-  //   static get observedAttributes() {
-  //     return [
-  //       "data-special-burgers",
-  //       "data-steak-burgers",
-  //       "data-mini-burgers",
-  //       "data-stacked-burgers",
-  //       "data-smashes-burgers",
-  //       "data-desserts",
-  //       "data-sides",
-  //       "data-drinks",
-  //       "data-fries",
-  //     ];
-  //   }
-
-  //   attributeChangedCallback(name, oldValue, newValue) {
-  //     // if (name === 'data-special-burgers') {
-  //     this.renderBurgers(newValue);
-  //     // }
-  //   }
-
-  //   // get the burger data then render it
-  //   renderBurgers(burgersString) {
-  //     let burgers = JSON.parse(burgersString);
-  //     // let burgerArray = burgersString.split(",")
-  //     // console.log(burgerArray[0])
-
-  //     const burgerMenuContainer = this.shadowRoot.querySelector(".burger-menu");
-
-  //     burgers.forEach((burger) => {
-  //       const menuItem = document.createElement("my-menu");
-  //       menuItem.setAttribute("data-burger-title", burger.title);
-  //       menuItem.setAttribute("data-burger-description", burger.desc);
-  //       menuItem.setAttribute("data-burger-image", burger.image);
-  //       menuItem.setAttribute("data-burger-price", burger.price);
-  //       menuItem.setAttribute("data-burger-id", burger.id);
-  //       burgerMenuContainer.appendChild(menuItem);
-  //     });
-  //   }
 }
 
 customElements.define("my-cart-order", CartOrder);

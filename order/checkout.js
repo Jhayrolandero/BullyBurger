@@ -122,7 +122,8 @@ document.querySelector("#confirm-btn-yes").addEventListener("click", () => {
   }
 
   localStorage.setItem("order-summary", JSON.stringify(orderJSON));
-  console.log(JSON.parse(localStorage.getItem("order-summary")));
+  localStorage.removeItem("burgers");
+  // console.log(JSON.parse(localStorage.getItem("order-summary")));
 });
 
 function closeModal(modal, overlay) {
