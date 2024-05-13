@@ -381,23 +381,10 @@ closeModalBtn.forEach((btn) => {
   });
 });
 
-function closeModal(modal) {
-  if (modal == null) return;
-
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-}
-
-overlay.addEventListener("click", () => {
-  const modal = document.querySelector("#modal");
-
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-});
-
 const burgerOrderDisplay = document.querySelector("#burger-order-list");
 const addOrder = document.querySelector("#add-order");
 
+// maker for delete order in order list
 function factoryRemoveButton(burgerList, _burgers, burger_ID) {
   // Create a new Map to hold the updated burger list
   const newBurgerList = new Map(_burgers);
@@ -436,6 +423,7 @@ function burger() {
       // const burgerMap = _burgers
       const burgerName = value.title;
       const burgerPrice = Number(value.price);
+      const burgerQuantity = Number(value.quantity);
       const burgerID = value.title.replace(/\W/g, "");
 
       if (_burgers.has(burgerID)) {
@@ -443,19 +431,19 @@ function burger() {
         const existingBurger = _burgers.get(burgerID);
 
         // Increment the quantity by 1
-        existingBurger.quantity += 1;
+        existingBurger.quantity += burgerQuantity;
+        // existingBurger.quantity += 1;
 
         // Calculate the new total price by adding the burgerPrice to the existing total price
         existingBurger.price += burgerPrice;
 
+        // Set the new list of burger
         _burgers.set(burgerID, existingBurger);
-        console.log(_burgers);
 
         const currList = document.querySelector(`#${burgerID}`);
         currList.textContent = `${
           existingBurger.quantity
         }X  ${burgerName}\n ₱ ${existingBurger.price.toFixed(2)}`;
-        // currList.textContent = `${_burgers.get(burgerID).quantity}X  ${burgerName}\n ${}`;
 
         // Call the factory remove button to make a remove button
         const { removeButton, newBurgerList } = factoryRemoveButton(
@@ -472,7 +460,7 @@ function burger() {
       } else {
         // _burgers.set(burgerID, 1);
         _burgers.set(burgerID, {
-          quantity: 1,
+          quantity: burgerQuantity,
           price: burgerPrice,
         });
         // Create a list element
@@ -483,16 +471,8 @@ function burger() {
 
         // Create a text node to display the burger name and quantity
         const burgerText = document.createTextNode(
-          `${_burgers.get(burgerID).quantity}X ${burgerName} \n ₱ ${_burgers
-            .get(burgerID)
-            .price.toFixed(2)}`
+          `${burgerQuantity}X ${burgerName} \n ₱ ${burgerPrice.toFixed(2)}`
         );
-        // const burgerText = document.createTextNode(
-        //   `${_burgers.get(burgerID)}X ${burgerName}}`
-        // );
-
-        // currList.textContent = `${existingBurger.quantity}X  ${burgerName}\n ${existingBurger.price}`;
-        // currList.textContent = `${_burgers.get(burgerID).quantity}X  ${burgerName}\n ${}`;
 
         const { removeButton, newBurgerList } = factoryRemoveButton(
           burgerList,
@@ -512,29 +492,115 @@ function burger() {
 }
 const orderState = new burger();
 
-function priceState() {
-  let _price = 0;
+const quantityDisplay = document.querySelector("#quantityDisplay");
+const priceDisplay = document.querySelector(".order-price");
 
+// In modal order
+function orderQuantity() {
+  let _burgerPrice = 0;
+  let _burgerQuantity = 1;
   return {
-    get price() {
-      return _price;
+    get order() {
+      return { _burgerPrice, _burgerQuantity };
     },
-    set price(value) {
-      // const priceDIsplay
+    // Increment the order quan and price
+    increment(price) {
+      if (_burgerPrice == 0) {
+        _burgerPrice = Number(price);
+      }
+      _burgerPrice += Number(price);
+
+      _burgerQuantity += 1;
+      quantityDisplay.innerHTML = _burgerQuantity;
+      priceDisplay.innerHTML = _burgerPrice.toFixed(2);
+    },
+    // Dec the order quan and price
+    decrement(price) {
+      if (_burgerQuantity <= 1) {
+        return;
+      }
+
+      if (_burgerPrice == 0) {
+        _burgerPrice = Number(price);
+      } else {
+        _burgerPrice -= Number(price);
+      }
+
+      _burgerQuantity -= 1;
+      quantityDisplay.innerHTML = _burgerQuantity;
+      priceDisplay.innerHTML = _burgerPrice.toFixed(2);
+    },
+    // Reset the order state everytime the modal close
+    reset() {
+      _burgerPrice = 0;
+      _burgerQuantity = 1;
+      quantityDisplay.innerHTML = _burgerQuantity;
+      priceDisplay.innerHTML = _burgerPrice.toFixed(2);
     },
   };
 }
-addOrder.addEventListener("click", () => {
+const orderQuantityState = new orderQuantity();
+
+function closeModal(modal) {
+  if (modal == null) return;
+
+  // reset
+  orderQuantityState.reset();
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+}
+
+overlay.addEventListener("click", () => {
+  const modal = document.querySelector("#modal");
+
+  // reset
+  orderQuantityState.reset();
+  modal.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+const decrementQuantity = document.querySelector("#quantityDecrement");
+const incrementQuantity = document.querySelector("#quantityIncrement");
+
+function burgerObj() {
+  // Get the data from order modal
   const burgerMenu = document.querySelector("#modal");
-
   const burgerID = burgerMenu.dataset.modalId;
-
   const burgerOBJ = document.querySelector(`.${burgerID}`);
+
   const burgerTitle = burgerOBJ.dataset.modalTitle;
   const burgerPrice = burgerOBJ.dataset.modalPrice;
 
+  return { burgerTitle, burgerPrice };
+}
+
+decrementQuantity.addEventListener("click", () => {
+  const { burgerTitle, burgerPrice } = burgerObj();
+  orderQuantityState.decrement(burgerPrice);
+});
+
+incrementQuantity.addEventListener("click", () => {
+  const { burgerTitle, burgerPrice } = burgerObj();
+  orderQuantityState.increment(burgerPrice);
+});
+
+addOrder.addEventListener("click", () => {
+  const burgerMenu = document.querySelector("#modal");
+  const burgerID = burgerMenu.dataset.modalId;
+  const burgerOBJ = document.querySelector(`.${burgerID}`);
+
+  const burgerTitle = burgerOBJ.dataset.modalTitle;
+  const burgerPrice = Number(burgerOBJ.dataset.modalPrice);
+
+  let { _burgerPrice, _burgerQuantity } = orderQuantityState.order;
+
+  // Initially the order modal state is 0 when ordering 1 only so get the initial price where the price is set
+  _burgerPrice = _burgerPrice == 0 ? burgerPrice : _burgerPrice;
+
+  console.log(_burgerPrice, burgerPrice);
   orderState.burgers = {
     title: burgerTitle,
-    price: burgerPrice,
+    price: _burgerPrice,
+    quantity: _burgerQuantity,
   };
 });

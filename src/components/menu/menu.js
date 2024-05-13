@@ -88,6 +88,7 @@ class Menu extends HTMLElement {
     });
   }
 
+  // Observer
   attributeChangedCallback(name, oldValue, newValue) {
     console.log(name);
 
@@ -114,6 +115,7 @@ class Menu extends HTMLElement {
     }
   }
 
+  // Set the data when opening modal
   openModal(modal, overlay) {
     if (modal == null) return;
 

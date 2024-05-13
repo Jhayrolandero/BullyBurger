@@ -145,41 +145,50 @@
           <h4 class="burger-title"></h4>
           <button data-close-button class="btn-close">&times;</button>
         </div>
-        <p class="burger-desc"></p>
-        <div id="review-section">
-          <h4>Reviews</h4>
-          <div class="review-box">
-            <div class="profile"></div>
-            <div>
-              <div><h4>John Doe</h4></div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Exercitationem, placeat.
-              </p>
+        <div id="modal-content">
+          <p class="burger-desc"></p>
+          <div id="review-section">
+            <h4>Reviews</h4>
+            <div class="review-box">
+              <div class="profile"></div>
+              <div>
+                <div><h4>John Doe</h4></div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Exercitationem, placeat.
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="review-box">
-            <div class="profile"></div>
-            <div>
-              <div><h4>John Doe</h4></div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Exercitationem, placeat.
-              </p>
+            <div class="review-box">
+              <div class="profile"></div>
+              <div>
+                <div><h4>John Doe</h4></div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Exercitationem, placeat.
+                </p>
+              </div>
             </div>
-          </div>
-          <div class="review-box">
-            <div class="profile"></div>
-            <div>
-              <div><h4>John Doe</h4></div>
-              <p>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Exercitationem, placeat.
-              </p>
+            <div class="review-box">
+              <div class="profile"></div>
+              <div>
+                <div><h4>John Doe</h4></div>
+                <p>
+                  Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                  Exercitationem, placeat.
+                </p>
+              </div>
             </div>
           </div>
         </div>
-        <div class="order-div">
+        <div id="modal-footer" class="order-div">
+          <div class="quantity-selector">
+            <button id="quantityDecrement">-</button>
+            <div class="quantity">
+              <span id="quantityDisplay">1</span>
+            </div>
+            <button id="quantityIncrement">+</button>
+          </div>
           <button id="add-order">
             Add to order <span class="order-price"></span>
           </button>
