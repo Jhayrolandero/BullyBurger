@@ -130,6 +130,7 @@ class Menu extends HTMLElement {
       this.shadowRoot.querySelector(".burger-menu").dataset.menuPrice;
     modal.setAttribute("data-modal-id", burgerMenuID);
 
+    modal.setAttribute("data-modal-img", burgerMenu.dataset.menuImg);
     modal.setAttribute("data-modal-title", burgerMenu.dataset.menuTitle);
     modal.setAttribute("data-modal-price", burgerMenu.dataset.menuPrice);
 

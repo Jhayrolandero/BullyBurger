@@ -22,6 +22,7 @@ h4 {
   .cart-meta {
     display: flex;
     flex-direction: row;
+    gap: 0.5rem
   }
   
   .item-info {
@@ -35,7 +36,8 @@ h4 {
 <div class="cart-contents">
   <div class="cart-meta">
     <img
-      src="../public/images/burgers/burger-1.svg"
+    id="burger-img"
+      src=""
       alt=""
       width="80"
       height="80"
@@ -69,6 +71,7 @@ class CartOrder extends HTMLElement {
       this.dataset.burgerId;
     this.shadowRoot.querySelector("#total").textContent =
       "₱" + Number(this.dataset.burgerTotal).toFixed(2);
+    this.shadowRoot.querySelector("#burger-img").src = this.dataset.burgerImg;
   }
 
   //   static get observedAttributes() {

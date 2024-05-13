@@ -24,17 +24,18 @@ const deliverymode = document
 
 function renderCart() {
   const orders = JSON.parse(localStorage.getItem("burgers"));
-
+  console.log(orders);
   orders.forEach((element) => {
     // Create an instance of the custom element
     const cart = document.createElement("my-cart-order");
     cart.setAttribute("data-burger-id", element[0]);
     cart.setAttribute("data-burger-price", element[1].price);
     cart.setAttribute("data-burger-quantity", element[1].quantity);
-    cart.setAttribute("data-burger-total", element[1].price);
+    cart.setAttribute("data-burger-total", element[1].totalPrice);
     cart.setAttribute("data-burger-name", element[1].title);
+    cart.setAttribute("data-burger-img", element[1].img);
 
-    cost += element[1].price;
+    cost += element[1].totalPrice;
     quantity += element[1].quantity;
     cartCont.appendChild(cart);
     console.log(element[1].quantity);

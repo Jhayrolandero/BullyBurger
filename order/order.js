@@ -471,9 +471,12 @@ function burger() {
     set burgers(value) {
       // const burgerMap = _burgers
       const burgerName = value.title;
-      const burgerPrice = Number(value.price);
+      const burgerPrice = Number(value.totalPrice);
+      const burgerOrigPrice = Number(value.price);
       const burgerQuantity = Number(value.quantity);
       const burgerID = value.ID;
+      const burgerImg = value.img;
+      console.log(value);
       // const burgerID = value.title.replace(/\W/g, "");
 
       if (_burgers.has(burgerID)) {
@@ -493,7 +496,7 @@ function burger() {
           burgerID,
           existingBurger.quantity,
           burgerName,
-          existingBurger.price.toFixed(2),
+          existingBurger.totalPrice.toFixed(2),
           "burger-order-list"
         );
 
@@ -513,7 +516,9 @@ function burger() {
         _burgers.set(burgerID, {
           title: burgerName,
           quantity: burgerQuantity,
-          price: burgerPrice,
+          totalPrice: burgerPrice,
+          price: burgerOrigPrice,
+          img: burgerImg,
         });
 
         const burgerList = factoryOrderList(
@@ -589,7 +594,7 @@ function orderQuantity() {
 }
 const orderQuantityState = new orderQuantity();
 
-function closeModal(modal, overlay) {
+function closeModal(modal) {
   if (modal == null) return;
 
   // reset
@@ -641,28 +646,34 @@ addOrder.addEventListener("click", () => {
   const burgerTitle = burgerOBJ.dataset.modalTitle;
   const burgerPrice = Number(burgerOBJ.dataset.modalPrice);
 
+  const burgerImg = burgerOBJ.dataset.modalImg;
   let { _burgerPrice, _burgerQuantity } = orderQuantityState.order;
 
   // Initially the order modal state is 0 when ordering 1 only so get the initial price where the price is set
   _burgerPrice = _burgerPrice == 0 ? burgerPrice : _burgerPrice;
 
   console.log(_burgerPrice, burgerPrice);
+
   orderState.burgers = {
     ID: burgerID,
     title: burgerTitle,
-    price: _burgerPrice,
+    price: burgerPrice,
+    totalPrice: _burgerPrice,
     quantity: _burgerQuantity,
+    img: burgerImg,
   };
 
   const burgerOrder = orderState.burgers;
   // Save the burger order
 
+  console.log(burgerOrder);
   // convert it into array
   const mapEntriesArray = Array.from(burgerOrder);
 
+  console.log(mapEntriesArray);
   // Save to local storage
   localStorage.setItem("burgers", JSON.stringify(mapEntriesArray));
 
-  closeModal(burgerMenu, overlay);
-  closeOverlay(burgerMenu, overlay);
+  closeModal(burgerMenu);
+  closeOverlay(burgerMenu);
 });
