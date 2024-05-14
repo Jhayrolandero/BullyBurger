@@ -34,6 +34,18 @@ template.innerHTML = `
     font-size: 1.5rem;
   
   }
+
+  @media (min-width: 768px) {
+    .cart-empty > h4 {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .cart-empty > h4 {
+      font-size: 2rem;
+    }
+  }
     
 </style>
 <div class="cart-empty">
