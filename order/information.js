@@ -1,5 +1,6 @@
 import "../src/components/deliver-option/customer-info.js";
 import "../src/components/deliver-option/payment-method.js";
+import "../src/components/deliver-option/transaction-summary.js";
 
 const progress = document.querySelector("#progress");
 const prev = document.querySelector("#prev");
@@ -8,6 +9,7 @@ const circles = document.querySelectorAll(".circle");
 const container = document.querySelector(".content");
 const customerForm = document.createElement("my-customer-form");
 const paymentForm = document.createElement("my-payment-form");
+const transactionSum = document.createElement("my-transaction-summary");
 const customerFormDisplay = document.querySelector("#cust-form");
 
 let currentActive = 1;
@@ -67,6 +69,7 @@ function update() {
       break;
     case 3:
       removeElement(container);
+      renderPayment(container, transactionSum);
       break;
   }
 }
@@ -76,6 +79,10 @@ function renderForm(container, form) {
   container.appendChild(form);
 }
 function renderPayment(container, form) {
+  container.appendChild(form);
+}
+
+function renderTransaction(container, form) {
   container.appendChild(form);
 }
 

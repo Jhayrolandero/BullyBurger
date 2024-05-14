@@ -1,8 +1,7 @@
 const template = document.createElement("template");
 template.innerHTML = `
 <style>
-form {
-    width: 70%;
+  form {
     max-width: 480px;
   }
   .form-group {
@@ -39,30 +38,71 @@ form {
     border-radius: 4px;
     left: 8px;
   }
-      
 </style>
-<div class="form-group">
-<input type="text" placeholder=" " id="name" />
-<label for="name">Name</label>
+<form id="myForm">
+  <div class="form-group">
+    <input type="text" name="name" placeholder=" " id="name" />
+    <label for="name">Name</label>
+  </div>
+  <div class="form-group">
+    <input type="text" name="address" placeholder=" " id="address" />
+    <label for="address">Address</label>
+  </div>
+  <div class="form-group">
+    <input type="text" name="phonenumber" placeholder=" " id="phone" />
+    <label for="phone">Phone Number</label>
+  </div>
+</form>
+<div>
+  <h3>Form Data:</h3>
+  <p>Name: <span id="displayName"></span></p>
+  <p>Address: <span id="displayAddress"></span></p>
+  <p>Phone Number: <span id="displayPhone"></span></p>
 </div>
-<div class="form-group">
-<input type="text" placeholder=" " id="name" />
-<label for="name">Address</label>
-</div>
-<div class="form-group">
-<input type="text" placeholder=" " id="name" />
-<label for="name">Phone Number</label>
-</div>`;
+`;
 
 class CustomerForm extends HTMLElement {
   constructor() {
     super();
-
-    var shadow = this.attachShadow({ mode: "open" });
+    const shadow = this.attachShadow({ mode: "open" });
     shadow.append(template.content.cloneNode(true));
   }
 
-  connectedCallback() {}
+  connectedCallback() {
+    const data = {
+      value: "",
+    };
+
+    const nameForm = this.shadowRoot.getElementById("name");
+    const displayNameEl = this.shadowRoot.getElementById("displayName");
+
+    // Binding the printVal function to the custom element context
+    const printVal = () => {
+      displayNameEl.innerText = data.prop;
+    };
+
+    Object.defineProperty(data, "prop", {
+      get: function () {
+        console.log("Getter called");
+        return this.value;
+      },
+      set: function (value) {
+        console.log("Setter called");
+        this.value = value;
+        nameForm.value = value;
+        printVal();
+      },
+    });
+
+    // Attaching the event listener on keyup events
+    nameForm.addEventListener("keyup", (event) => {
+      console.log(event.target);
+      data.prop = event.target.value;
+    });
+
+    // Initial rendering
+    printVal();
+  }
 }
 
 customElements.define("my-customer-form", CustomerForm);

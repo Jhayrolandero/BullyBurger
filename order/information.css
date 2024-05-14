@@ -185,3 +185,19 @@ form {
   flex-direction: column;
   padding: 1em;
 }
+
+.summary-info {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25rem;
+}
+
+.summary-info > p {
+  text-align: start;
+}
+
+h4 {
+  font-size: 2.5rem;
+  text-align: center;
+}

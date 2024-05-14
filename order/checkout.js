@@ -67,6 +67,26 @@ function renderCart() {
   saleTax.innerHTML = "₱" + tax.toFixed(2);
   shippingTotal.innerHTML = "₱" + shippingCost.toFixed(2);
   totalCost.innerHTML = "₱" + total.toFixed(2);
+
+  const randomID = generateRandomID(8);
+
+  const date = formattedDate();
+  const orderJSON = {
+    cost,
+    tax,
+    shippingCost,
+    total,
+    orderID: randomID,
+    orderDate: date,
+  };
+
+  if (JSON.parse(localStorage.getItem("order-summary")) != null) {
+    localStorage.removeItem("order-summary");
+  }
+
+  localStorage.setItem("order-summary", JSON.stringify(orderJSON));
+  // localStorage.removeItem("burgers");
+  // console.log(JSON.parse(localStorage.getItem("order-summary")));
 }
 
 // Formula total burger sale * 0.05
