@@ -90,6 +90,20 @@ h4 {
   align-items: center;
 }
 
+#goback {
+  width: auto;
+  border: none;
+  background-color: #d07026;
+  color: #ffcf4e;
+  font-size: 1rem;
+  padding: 0.5em;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 5rem;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
 @media screen and (max-width: 1214px) {
   #body-2 > section > h4 {
     font-size: 2.5rem;
