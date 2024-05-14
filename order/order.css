@@ -42,6 +42,7 @@ body {
   width: 15%;
   min-width: 240px;
   max-width: 480;
+  overflow-y: hidden;
 }
 
 .sidebar .search,
@@ -128,7 +129,7 @@ body {
   border-radius: 1rem;
   gap: 3rem;
   min-height: 320px;
-  /* justify-content: space-between; */
+  justify-content: space-between;
   max-height: 520px;
   display: flex;
   flex-direction: column;
@@ -304,13 +305,6 @@ body {
   justify-content: space-between;
 }
 
-.order-list {
-  width: 100%;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
-  overflow-y: auto;
-  height: 100%;
-}
 /* .order-div > button {
   height: 80px;
   border: none;
@@ -385,4 +379,114 @@ body {
 
 .order-list-title {
   font-size: 1rem;
+}
+
+#openSidenav {
+  font-size: 30px;
+  cursor: pointer;
+  /* padding: 10px; */
+  background-color: #111;
+  color: white;
+  border: none;
+  margin: 20px;
+}
+
+.sidenav {
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+}
+
+.sidenav .sidebar {
+  padding-right: 0.5rem;
+  color: black;
+}
+
+.sidenav .sidebar .menu-btn {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  width: 100%;
+  color: black;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidenav .sidebar .menu-btn i {
+  margin-right: 10px;
+}
+
+.sidenav .sidebar .menu-btn p {
+  margin: 0;
+}
+
+.sidenav .sidebar .order .button1 a {
+  text-decoration: none;
+  color: black;
+}
+
+.sidenav .sidebar .order .button1 {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #444;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.sidenav .sidebar .search input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  margin-bottom: 20px;
+}
+
+#sidenav.open {
+  width: min-content; /* Adjust width as necessary */
+  overflow-y: auto;
+  height: 100%;
+  padding-left: 1.5rem;
+  z-index: 999;
+}
+
+.order-list {
+  width: 100%;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  overflow-y: auto;
+}
+
+#close-nav-cont {
+  color: white;
+  position: relative;
+}
+
+#close-nav-cont > button {
+  position: absolute;
+  top: 8px;
+  right: -40px;
+}
+
+#side-overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+#side-overlay.show {
+  display: block;
+}
+
+#empty-cart {
+  font-size: 3.5rem;
 }

@@ -12,6 +12,13 @@ body {
   color: black;
 }
 
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 32px;
+  padding-right: 32px;
+}
 /* .container {
   padding-top: 5rem;
   padding-bottom: 5rem;

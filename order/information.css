@@ -10,6 +10,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Luckiest Guy", cursive;
 }
 
 /* body {
@@ -95,6 +96,14 @@
 
 .circle.active {
   border-color: var(--line-border-fill);
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 32px;
+  padding-right: 32px;
 }
 
 .btn {

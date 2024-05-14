@@ -89,3 +89,74 @@ h4 {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 1214px) {
+  #body-2 > section > h4 {
+    font-size: 2.5rem;
+  }
+  #body-2 > section > .summary-info {
+    font-size: 1.5rem;
+  }
+  section {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 975px) {
+  #body-2 > section > h4 {
+    font-size: 2rem;
+  }
+  #body-2 > section > .summary-info {
+    font-size: 1rem;
+  }
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+}
+@media screen and (max-width: 719px) {
+  #body-2 > section > h4 {
+    font-size: 1.5rem;
+  }
+  #body-2 > section > .summary-info {
+    font-size: 0.8rem;
+  }
+  section {
+    padding-left: 0.7rem;
+    padding-right: 0.7rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 1709px) {
+  h4 {
+    font-size: 2.5rem;
+  }
+  #body-1 > p {
+    font-size: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 1140px) {
+  h4 {
+    font-size: 2rem;
+  }
+  #body-1 > p {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 854px) {
+  h4 {
+    font-size: 1.5rem;
+  }
+  #body-1 > p {
+    font-size: 1rem;
+  }
+}
