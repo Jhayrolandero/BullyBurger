@@ -17,6 +17,9 @@ template.innerHTML = `
   h4 {
     font-size: 2.5rem;
     text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+
   }
   </style>
 <h4>Transaction Summary</h4>
@@ -53,7 +56,7 @@ template.innerHTML = `
   <span id="tax"></span>
 </div>
 <div class="summary-info">
-  <p>Estimateed Total</p>
+  <p>Estimated Total</p>
   <span id="total"></span>
 </div>
 `;

@@ -67,9 +67,20 @@ form {
     flex-direction: column;
     padding: 1em;
   }
+
+  h4 {
+    font-size: 2.5rem;
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+
+  }
+
     
       
 </style>
+<h4>Payment</h4>
+
 <div class="radio-container">
 <label class="label">
   <div>
@@ -104,24 +115,6 @@ form {
     />
   </div>
 </label>
-<div id="Credit" class="panel">
-    <div class="form-group">
-      <input type="text" placeholder=" " id="name" />
-      <label for="name">Name on Card</label>
-    </div>
-    <div class="form-group">
-      <input type="text" placeholder=" " id="cardNO" />
-      <label for="name">Card Number</label>
-    </div>
-    <div class="form-group">
-      <input type="Date" placeholder=" " id="date" />
-      <label for="name">Expiration Date</label>
-    </div>
-    <div class="form-group">
-      <input type="text" placeholder=" " id="cvv" />
-      <label for="name">CVV</label>
-    </div>
-</div>
 <label class="label">
   <div>
     <input type="radio" name="expandable" value="Paypal_GCash" />
@@ -171,37 +164,9 @@ class PaymentForm extends HTMLElement {
       });
     });
 
-    const paymentCredit = {
-      cardName: "",
-      cardNo: "",
-      date: new Date(),
-      cvv: "",
-    };
-
     const data = {
       payment: "",
     };
-
-    const nameForm = this.shadowRoot.getElementById("name");
-    const cardNumForm = this.shadowRoot.getElementById("cardNO");
-    const cvvForm = this.shadowRoot.getElementById("cvv");
-    const dateForm = this.shadowRoot.getElementById("date");
-
-    nameForm.addEventListener("keyup", (event) => {
-      paymentCredit.prop2 = event.target;
-    });
-
-    cardNumForm.addEventListener("keyup", (event) => {
-      paymentCredit.prop2 = event.target;
-    });
-
-    cvvForm.addEventListener("keyup", (event) => {
-      paymentCredit.prop2 = event.target;
-    });
-
-    dateForm.addEventListener("onchange", (event) => {
-      paymentCredit.prop2 = event.target;
-    });
 
     const saveInfo = () => {
       const paymentInfo = {
@@ -214,13 +179,7 @@ class PaymentForm extends HTMLElement {
     };
 
     const checkAllFieldsPopulated = (value) => {
-      if (value !== "Credit") {
-        console.log("Not credit");
-
-        return;
-      }
-      console.log(paymentCredit.prop2);
-      if (nameForm.value && cardNumForm.value && cvvForm.value && dateForm) {
+      if (value) {
         this.dispatchEvent(
           new CustomEvent("paymentCompleted", {
             detail: { ...data },
@@ -241,12 +200,6 @@ class PaymentForm extends HTMLElement {
       }
     };
 
-    // const checkCacheValue = () => {
-    //   data.prop = phoneForm;
-    //   data.prop = nameForm;
-    //   data.prop = addressForm;
-    // };
-
     // FOr payment Method
     Object.defineProperty(data, "prop", {
       get: function () {
@@ -260,41 +213,32 @@ class PaymentForm extends HTMLElement {
       },
     });
 
-    // Checker for credit info
-    Object.defineProperty(paymentCredit, "prop2", {
-      get: function () {
-        return paymentCredit;
-      },
-      set: function (value) {
-        // console.log(value);
-        switch (value.id) {
-          case "name":
-            this.cardName = value.value;
-            nameForm.name = value.value;
-            break;
-          case "cardNO":
-            this.cardNo = value.value;
-            cardNumForm.name = value.value;
-            break;
-          case "cvv":
-            this.cvv = value.value;
-            cvvForm.name = value.value;
-            break;
-          case "date":
-            this.date = value.value;
-            dateForm.name = value.value;
-            break;
-        }
-
-        checkAllFieldsPopulated("Credit");
-        // console.log(value);
-      },
-    });
-
-    // console.log(data);
     checkAllFieldsPopulated(data.prop.payment);
-    // checkCacheValue();
   }
 }
 
 customElements.define("my-payment-form", PaymentForm);
+
+/**
+ * 
+ * 
+ * <div id="Credit" class="panel">
+    <div class="form-group">
+      <input type="text" placeholder=" " id="name" />
+      <label for="name">Name on Card</label>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder=" " id="cardNO" />
+      <label for="name">Card Number</label>
+    </div>
+    <div class="form-group">
+      <input type="Date" placeholder=" " id="date" />
+      <label for="name">Expiration Date</label>
+    </div>
+    <div class="form-group">
+      <input type="text" placeholder=" " id="cvv" />
+      <label for="name">CVV</label>
+    </div>
+</div>
+
+ */

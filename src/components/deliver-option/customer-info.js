@@ -38,8 +38,16 @@ template.innerHTML = `
     border-radius: 4px;
     left: 8px;
   }
+
+  h4 {
+    font-size: 2.5rem;
+    text-align: center;
+    border-bottom: 1px solid black;
+    padding-bottom: 0.5em;
+  }
 </style>
 <form id="customerForm">
+<h4>Customer Form</h4>
   <div class="form-group">
     <input type="text" name="name" placeholder=" " id="name" required/>
     <label for="name">Name</label>

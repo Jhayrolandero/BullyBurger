@@ -1,5 +1,6 @@
 import "../src\\components\\cart\\cart.js";
 import "../src\\components\\cart-empty\\cart-empty.js";
+import "../src/components/checkout-btn/checkout.js";
 
 let cost = 0;
 let quantity = 0;
@@ -61,6 +62,10 @@ function renderCart() {
     renderEmptyCart(cartCont, emptyCartOrder);
     return;
   }
+
+  const checkoutCont = document.querySelector("#checkout-btn-cont");
+  const checkout = document.createElement("my-checkout-btn");
+  checkoutCont.appendChild(checkout);
 
   const orders = JSON.parse(localStorage.getItem("burgers"));
   console.log(orders);
@@ -144,64 +149,6 @@ function computeShippingCost(quantity) {
 function computeTotalCost(cost, tax, shipping) {
   return cost + tax + shipping;
 }
-const modal = document.querySelector("#modal");
-const overlay = document.querySelector("#overlay");
-
-const checkoutBTN = document
-  .querySelector(".checkout-btn")
-  .addEventListener("click", () => {
-    openModal(modal, overlay);
-  });
-
-// document.querySelector(".close-btn").addEventListener("click", () => {
-//   closeModal(modal, overlay);
-// });
-
-// overlay.addEventListener("click", () => {
-//   closeModal(modal, overlay);
-// });
-
-// document.querySelector("#confirm-btn-no").addEventListener("click", () => {
-//   closeModal(modal, overlay);
-// });
-
-// document.querySelector("#confirm-btn-yes").addEventListener("click", () => {
-//   closeModal(modal, overlay);
-
-//   const randomID = generateRandomID(8);
-
-//   const date = formattedDate();
-//   const orderJSON = {
-//     cost,
-//     tax,
-//     shippingCost,
-//     total,
-//     orderID: randomID,
-//     orderDate: date,
-//   };
-
-//   if (JSON.parse(localStorage.getItem("order-summary")) != null) {
-//     localStorage.removeItem("order-summary");
-//   }
-
-//   localStorage.setItem("order-summary", JSON.stringify(orderJSON));
-//   localStorage.removeItem("burgers");
-//   // console.log(JSON.parse(localStorage.getItem("order-summary")));
-// });
-
-function closeModal(modal, overlay) {
-  if (modal == null || overlay == null) return;
-
-  modal.classList.remove("active");
-  overlay.classList.remove("active");
-}
-
-function openModal(modal, overlay) {
-  if (modal == null || overlay == null) return;
-
-  modal.classList.add("active");
-  overlay.classList.add("active");
-}
 
 function generateRandomID(length) {
   const chars =
@@ -237,7 +184,7 @@ function renderEmptyCart(cartCont, emptyCartCont) {
 
   if (
     JSON.parse(localStorage.getItem("burgers")) == null ||
-    JSON.parse(localStorage.getItem("burgers")).length > 0
+    JSON.parse(localStorage.getItem("burgers")).length <= 0
   ) {
     cartCont.appendChild(emptyCartCont);
   }

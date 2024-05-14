@@ -33,14 +33,21 @@ h4 {
   .header {
     display: flex;
     justify-content: space-between;
-
-    
   }
+
+  #deleteOrder {
+    background-color: none;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem
+  }
+
 </style>
 <div class="cart-order">
 <div class="header">
   <h4></h4><button id="deleteOrder">
-  
+    X
   </button>
 </div>
 <div class="cart-contents">

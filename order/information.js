@@ -1,6 +1,7 @@
 import "../src/components/deliver-option/customer-info.js";
 import "../src/components/deliver-option/payment-method.js";
 import "../src/components/deliver-option/transaction-summary.js";
+import "../src/components/proceed/proceed.js";
 
 const progress = document.querySelector("#progress");
 const prev = document.querySelector("#prev");
@@ -10,9 +11,26 @@ const container = document.querySelector(".content");
 const customerForm = document.createElement("my-customer-form");
 const paymentForm = document.createElement("my-payment-form");
 const transactionSum = document.createElement("my-transaction-summary");
-const customerFormDisplay = document.querySelector("#cust-form");
 
+const proceedBtnDisplay = document.querySelector("#proceed");
+
+proceedBtnDisplay.addEventListener("click", () => {
+  const customerInfo = JSON.parse(localStorage.getItem("customer-info"));
+  const paymentMethod = JSON.parse(localStorage.getItem("payment-info"));
+  const orderSummary = JSON.parse(localStorage.getItem("order-summary"));
+
+  const copyTransac = { customerInfo, paymentMethod, orderSummary };
+
+  document.location = "./success.html";
+
+  localStorage.setItem("transaction", JSON.stringify(copyTransac));
+  localStorage.removeItem("customer-info");
+  localStorage.removeItem("payment-info");
+  localStorage.removeItem("order-summary");
+  localStorage.removeItem("burgers");
+});
 let isCustomerFormComplete = false;
+let isPaymentFormComplete = false;
 let currentActive = 1;
 
 next.addEventListener("click", () => {
@@ -49,13 +67,16 @@ function update() {
   progress.style.width =
     ((actives.length - 1) / (circles.length - 1)) * 100 + "%";
 
-  console.log(circles.length);
   if (currentActive === 1) {
     prev.disabled = true;
     next.disabled = true;
+    next.classList.remove("hide");
   } else if (currentActive === circles.length) {
-    next.disabled = true;
+    document.querySelector("#proceed").classList.add("ok");
+    next.classList.add("hide");
   } else {
+    document.querySelector("#proceed").classList.remove("ok");
+    next.classList.remove("hide");
     prev.disabled = false;
     next.disabled = false;
   }
@@ -126,6 +147,23 @@ document.addEventListener("notCompleteForm", () => {
   console.log("Not");
   isCustomerFormComplete = false;
   if (currentActive === 1 && !isCustomerFormComplete) {
+    next.disabled = true;
+  }
+});
+
+document.addEventListener("paymentCompleted", () => {
+  console.log("Complete");
+  isPaymentFormComplete = true;
+
+  if (currentActive === 2 && isPaymentFormComplete) {
+    next.disabled = false;
+  }
+});
+
+document.addEventListener("notCompletePayment", () => {
+  console.log("Not");
+  isPaymentFormComplete = false;
+  if (currentActive === 2 && !isPaymentFormComplete) {
     next.disabled = true;
   }
 });
