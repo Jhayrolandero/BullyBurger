@@ -1,4 +1,5 @@
 import "../src\\components\\cart\\cart.js";
+import "../src\\components\\cart-empty\\cart-empty.js";
 
 let cost = 0;
 let quantity = 0;
@@ -10,6 +11,7 @@ const totalCost = document.querySelector("#total-cost");
 const saleTax = document.querySelector("#sales-tax");
 const subTotal = document.querySelector("#subtotal");
 const shippingTotal = document.querySelector("#shippingCost");
+const emptyCartOrder = document.createElement("my-cart-empty");
 
 let modeDelivery = "pickup";
 
@@ -18,17 +20,28 @@ const pickUpmode = document
   .addEventListener("click", () => {
     modeDelivery = "pickup";
 
-    console.log(modeDelivery);
+    shippingCost = computeShippingCost(quantity);
+    shippingTotal.innerHTML = "₱" + shippingCost.toFixed(2);
   });
 
 const deliverymode = document
   .querySelector("#deliver")
   .addEventListener("click", () => {
     modeDelivery = "deliver";
-    console.log(modeDelivery);
+
+    shippingCost = computeShippingCost(quantity);
+    shippingTotal.innerHTML = "₱" + shippingCost.toFixed(2);
   });
 
 function renderCart() {
+  if (
+    JSON.parse(localStorage.getItem("burgers")) == null ||
+    JSON.parse(localStorage.getItem("burgers")).length <= 0
+  ) {
+    renderEmptyCart(cartCont, emptyCartOrder);
+    return;
+  }
+
   const orders = JSON.parse(localStorage.getItem("burgers"));
   console.log(orders);
   orders.forEach((element) => {
@@ -68,6 +81,7 @@ total quantity * 2.5 + (quantity*0.001) for over items below 5 >= x =< 10
 free for over 10
 */
 function computeShippingCost(quantity) {
+  if (modeDelivery === "pickup") return 0;
   if (quantity < 5) {
     return quantity * 2 + quantity * 0.0025;
   } else if (quantity >= 5 && quantity <= 10) {
@@ -88,7 +102,6 @@ const checkoutBTN = document
   .addEventListener("click", () => {
     openModal(modal, overlay);
   });
-renderCart();
 
 document.querySelector(".close-btn").addEventListener("click", () => {
   closeModal(modal, overlay);
@@ -168,3 +181,17 @@ function formattedDate() {
 
   return formattedDate;
 }
+
+function renderEmptyCart(cartCont, emptyCartCont) {
+  console.log(JSON.parse(localStorage.getItem("burgers")));
+
+  if (
+    JSON.parse(localStorage.getItem("burgers")) == null ||
+    JSON.parse(localStorage.getItem("burgers")).length > 0
+  ) {
+    cartCont.appendChild(emptyCartCont);
+  }
+  return;
+}
+
+renderCart();

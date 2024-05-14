@@ -3,6 +3,7 @@ import "../src\\global.js";
 
 const closeModalBtn = document.querySelectorAll("[data-close-button]");
 const overlay = document.getElementById("overlay");
+const orderlistDisplay = document.querySelector(".order-list");
 
 closeModalBtn.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -167,6 +168,8 @@ function burger() {
         setLocalOrder(_burgers);
         burgerList.appendChild(removeButton);
         burgerOrderDisplay.appendChild(burgerList);
+
+        removeEmptyCart(orderlistDisplay, "empty-cart");
       }
     },
   };
@@ -310,8 +313,16 @@ addOrder.addEventListener("click", () => {
 });
 
 function getLocalStorage() {
-  if (JSON.parse(localStorage.getItem("burgers")) == null) return;
+  if (
+    JSON.parse(localStorage.getItem("burgers")) == null ||
+    JSON.parse(localStorage.getItem("burgers")).length <= 0
+  ) {
+    const emptyDisplay = makeEmptyCart();
+    setEmptyCart(orderlistDisplay, emptyDisplay);
+    return;
+  }
 
+  console.log(localStorage.getItem("burgers"));
   const localOrder = JSON.parse(localStorage.getItem("burgers"));
 
   localOrder.forEach((element) => {
@@ -327,14 +338,35 @@ function getLocalStorage() {
 }
 
 function setLocalOrder(burgers) {
-  // if (JSON.parse(localStorage.getItem("burgers")) == null) return;
-
-  console.log(burgers);
   const mapEntriesArray = Array.from(burgers);
   localStorage.removeItem("burgers");
   localStorage.setItem("burgers", JSON.stringify(mapEntriesArray));
   console.log(JSON.parse(localStorage.getItem("burgers")));
   return;
+}
+
+function makeEmptyCart() {
+  const emptyCartDisplay = document.createElement("div");
+  emptyCartDisplay.setAttribute("id", "empty-cart");
+  const emptyCartSVG = document.createElement("i");
+  emptyCartSVG.classList.add("fa-duotone");
+  emptyCartSVG.classList.add("fa-cart-shopping");
+
+  emptyCartDisplay.appendChild(emptyCartSVG);
+
+  return emptyCartDisplay;
+  // <i class="fa-duotone fa-cart-shopping"></i>
+}
+function setEmptyCart(orderList, emptyCart) {
+  console.log(orderList);
+  orderList.prepend(emptyCart);
+}
+
+function removeEmptyCart(orderList, emptyCartID) {
+  const emptyCart = document.querySelector(`#${emptyCartID}`);
+
+  if (emptyCart == null) return;
+  orderList.removeChild(emptyCart);
 }
 
 getLocalStorage(0);

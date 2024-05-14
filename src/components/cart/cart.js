@@ -30,9 +30,19 @@ h4 {
     flex-direction: column;
   }
   
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    
+  }
 </style>
 <div class="cart-order">
-<h4></h4>
+<div class="header">
+  <h4></h4><button id="deleteOrder">
+  
+  </button>
+</div>
 <div class="cart-contents">
   <div class="cart-meta">
     <img
@@ -72,6 +82,33 @@ class CartOrder extends HTMLElement {
     this.shadowRoot.querySelector("#total").textContent =
       "₱" + Number(this.dataset.burgerTotal).toFixed(2);
     this.shadowRoot.querySelector("#burger-img").src = this.dataset.burgerImg;
+
+    const deleteBTNIcon = this.shadowRoot.createElement("i");
+    deleteBTNIcon.classList.add("fa-solid");
+    deleteBTNIcon.classList.add("fa-trash-can");
+
+    this.shadowRoot.querySelector("#deleteOrder").appendChild(deleteBTNIcon);
+    this.shadowRoot
+      .querySelector("#deleteOrder")
+      .addEventListener("click", () => {
+        console.log(this.dataset.burgerId);
+        const orderStorage = JSON.parse(localStorage.getItem("burgers"));
+        let newOrderStorage = this.deleteOrder(
+          orderStorage,
+          this.dataset.burgerId
+        );
+
+        // Set new item
+        localStorage.removeItem("burgers");
+        localStorage.setItem("burgers", JSON.stringify(newOrderStorage));
+
+        // reload
+        location.reload();
+      });
+  }
+
+  deleteOrder(orderStorage, id) {
+    return orderStorage.filter((item) => item[0] !== id);
   }
 }
 

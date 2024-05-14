@@ -127,8 +127,8 @@ body {
 .order {
   border-radius: 1rem;
   gap: 3rem;
-  min-height: 160px;
-  justify-content: space-between;
+  min-height: 320px;
+  /* justify-content: space-between; */
   max-height: 520px;
   display: flex;
   flex-direction: column;
@@ -177,7 +177,8 @@ body {
 }
 
 #modal-body-1 {
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
+  background-color: rgb(16, 15, 15);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,8 +186,9 @@ body {
 
 #modal-body-1 > img {
   width: 100%;
-  height: 100%;
-  object-fit: contain;
+  /* height: 100%; */
+  object-fit: fit;
+  aspect-ratio: 16/9;
 }
 
 #modal-heading > h4 {
@@ -307,6 +309,7 @@ body {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   overflow-y: auto;
+  height: 100%;
 }
 /* .order-div > button {
   height: 80px;
