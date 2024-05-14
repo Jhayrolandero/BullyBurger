@@ -39,9 +39,9 @@ template.innerHTML = `
     left: 8px;
   }
 </style>
-<form id="myForm">
+<form id="customerForm">
   <div class="form-group">
-    <input type="text" name="name" placeholder=" " id="name" />
+    <input type="text" name="name" placeholder=" " id="name" required/>
     <label for="name">Name</label>
   </div>
   <div class="form-group">
@@ -49,16 +49,10 @@ template.innerHTML = `
     <label for="address">Address</label>
   </div>
   <div class="form-group">
-    <input type="text" name="phonenumber" placeholder=" " id="phone" />
+    <input type="text" name="phonenumber" placeholder=" " id="phone" required/>
     <label for="phone">Phone Number</label>
   </div>
 </form>
-<div>
-  <h3>Form Data:</h3>
-  <p>Name: <span id="displayName"></span></p>
-  <p>Address: <span id="displayAddress"></span></p>
-  <p>Phone Number: <span id="displayPhone"></span></p>
-</div>
 `;
 
 class CustomerForm extends HTMLElement {
@@ -70,38 +64,92 @@ class CustomerForm extends HTMLElement {
 
   connectedCallback() {
     const data = {
-      value: "",
+      name: "",
+      address: "",
+      phone: "",
     };
 
     const nameForm = this.shadowRoot.getElementById("name");
-    const displayNameEl = this.shadowRoot.getElementById("displayName");
+    const addressForm = this.shadowRoot.getElementById("address");
+    const phoneForm = this.shadowRoot.getElementById("phone");
 
-    // Binding the printVal function to the custom element context
-    const printVal = () => {
-      displayNameEl.innerText = data.prop;
+    const saveInfo = () => {
+      const customerInfo = {
+        name: data.prop.name,
+        address: data.prop.address,
+        phone: data.prop.phone,
+      };
+
+      // Save the info obvdata.prop.phone
+      localStorage.setItem("customer-info", JSON.stringify(customerInfo));
+    };
+
+    const checkAllFieldsPopulated = () => {
+      if (data.name && data.address && data.phone) {
+        this.dispatchEvent(
+          new CustomEvent("formCompleted", {
+            detail: { ...data },
+            bubbles: true,
+            composed: true,
+          })
+        );
+        console.log("Comp");
+      } else {
+        this.dispatchEvent(
+          new CustomEvent("notCompleteForm", {
+            detail: { ...data },
+            bubbles: true,
+            composed: true,
+          })
+        );
+        console.log("Not");
+      }
+    };
+
+    const checkCacheValue = () => {
+      data.prop = phoneForm;
+      data.prop = nameForm;
+      data.prop = addressForm;
     };
 
     Object.defineProperty(data, "prop", {
       get: function () {
-        console.log("Getter called");
-        return this.value;
+        return data;
       },
       set: function (value) {
-        console.log("Setter called");
-        this.value = value;
-        nameForm.value = value;
-        printVal();
+        switch (value.id) {
+          case "name":
+            this.name = value.value;
+            nameForm.name = value.value;
+            break;
+          case "phone":
+            this.phone = value.value;
+            phoneForm.name = value.value;
+            break;
+          case "address":
+            this.address = value.value;
+            addressForm.name = value.value;
+            break;
+        }
+        saveInfo();
+        checkAllFieldsPopulated();
       },
     });
 
+    checkAllFieldsPopulated();
+    checkCacheValue();
     // Attaching the event listener on keyup events
     nameForm.addEventListener("keyup", (event) => {
-      console.log(event.target);
-      data.prop = event.target.value;
+      data.prop = event.target;
     });
 
-    // Initial rendering
-    printVal();
+    addressForm.addEventListener("keyup", (event) => {
+      data.prop = event.target;
+    });
+
+    phoneForm.addEventListener("keyup", (event) => {
+      data.prop = event.target;
+    });
   }
 }
 

@@ -12,6 +12,7 @@ const paymentForm = document.createElement("my-payment-form");
 const transactionSum = document.createElement("my-transaction-summary");
 const customerFormDisplay = document.querySelector("#cust-form");
 
+let isCustomerFormComplete = false;
 let currentActive = 1;
 
 next.addEventListener("click", () => {
@@ -48,8 +49,10 @@ function update() {
   progress.style.width =
     ((actives.length - 1) / (circles.length - 1)) * 100 + "%";
 
+  console.log(circles.length);
   if (currentActive === 1) {
     prev.disabled = true;
+    next.disabled = true;
   } else if (currentActive === circles.length) {
     next.disabled = true;
   } else {
@@ -57,7 +60,10 @@ function update() {
     next.disabled = false;
   }
 
-  console.log(currentActive);
+  if (currentActive === 1 && isCustomerFormComplete) {
+    next.disabled = true;
+  }
+
   switch (currentActive) {
     case 1:
       removeElement(container);
@@ -105,4 +111,21 @@ radios.forEach((radio) => {
       selectedPanel.classList.add("show");
     }
   });
+});
+
+document.addEventListener("formCompleted", () => {
+  console.log("Complete");
+  isCustomerFormComplete = true;
+
+  if (currentActive === 1 && isCustomerFormComplete) {
+    next.disabled = false;
+  }
+});
+
+document.addEventListener("notCompleteForm", () => {
+  console.log("Not");
+  isCustomerFormComplete = false;
+  if (currentActive === 1 && !isCustomerFormComplete) {
+    next.disabled = true;
+  }
 });
