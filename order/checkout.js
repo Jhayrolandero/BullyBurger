@@ -12,26 +12,46 @@ const saleTax = document.querySelector("#sales-tax");
 const subTotal = document.querySelector("#subtotal");
 const shippingTotal = document.querySelector("#shippingCost");
 const emptyCartOrder = document.createElement("my-cart-empty");
+const randomID = generateRandomID(8);
+const date = formattedDate();
+let modeDelivery = "Pickup";
 
-let modeDelivery = "pickup";
+document.querySelector("#pick").addEventListener("click", () => {
+  modeDelivery = "Pickup";
 
-const pickUpmode = document
-  .querySelector("#pick")
-  .addEventListener("click", () => {
-    modeDelivery = "pickup";
+  shippingCost = computeShippingCost(quantity);
+  shippingTotal.innerHTML = "₱" + shippingCost.toFixed(2);
 
-    shippingCost = computeShippingCost(quantity);
-    shippingTotal.innerHTML = "₱" + shippingCost.toFixed(2);
-  });
+  const orderJSON = {
+    cost,
+    tax,
+    shippingCost,
+    total,
+    modeDelivery,
+    orderID: randomID,
+    orderDate: date,
+  };
 
-const deliverymode = document
-  .querySelector("#deliver")
-  .addEventListener("click", () => {
-    modeDelivery = "deliver";
+  makeOrderSum(orderJSON);
+});
 
-    shippingCost = computeShippingCost(quantity);
-    shippingTotal.innerHTML = "₱" + shippingCost.toFixed(2);
-  });
+document.querySelector("#deliver").addEventListener("click", () => {
+  modeDelivery = "Deliver";
+
+  shippingCost = computeShippingCost(quantity);
+  shippingTotal.innerHTML = "₱" + shippingCost.toFixed(2);
+
+  const orderJSON = {
+    cost,
+    tax,
+    shippingCost,
+    total,
+    modeDelivery,
+    orderID: randomID,
+    orderDate: date,
+  };
+  makeOrderSum(orderJSON);
+});
 
 function renderCart() {
   if (
@@ -68,25 +88,35 @@ function renderCart() {
   shippingTotal.innerHTML = "₱" + shippingCost.toFixed(2);
   totalCost.innerHTML = "₱" + total.toFixed(2);
 
-  const randomID = generateRandomID(8);
+  // const randomID = generateRandomID(8);
 
-  const date = formattedDate();
+  // const date = formattedDate();
   const orderJSON = {
     cost,
     tax,
     shippingCost,
     total,
+    modeDelivery,
     orderID: randomID,
     orderDate: date,
   };
 
+  makeOrderSum(orderJSON);
+  // if (JSON.parse(localStorage.getItem("order-summary")) != null) {
+  //   localStorage.removeItem("order-summary");
+  // }
+
+  // localStorage.setItem("order-summary", JSON.stringify(orderJSON));
+  // localStorage.removeItem("burgers");
+  // console.log(JSON.parse(localStorage.getItem("order-summary")));
+}
+
+function makeOrderSum(orderJSON) {
   if (JSON.parse(localStorage.getItem("order-summary")) != null) {
     localStorage.removeItem("order-summary");
   }
 
   localStorage.setItem("order-summary", JSON.stringify(orderJSON));
-  // localStorage.removeItem("burgers");
-  // console.log(JSON.parse(localStorage.getItem("order-summary")));
 }
 
 // Formula total burger sale * 0.05
@@ -101,7 +131,7 @@ total quantity * 2.5 + (quantity*0.001) for over items below 5 >= x =< 10
 free for over 10
 */
 function computeShippingCost(quantity) {
-  if (modeDelivery === "pickup") return 0;
+  if (modeDelivery.toLowerCase() === "pickup") return 0;
   if (quantity < 5) {
     return quantity * 2 + quantity * 0.0025;
   } else if (quantity >= 5 && quantity <= 10) {
@@ -123,41 +153,41 @@ const checkoutBTN = document
     openModal(modal, overlay);
   });
 
-document.querySelector(".close-btn").addEventListener("click", () => {
-  closeModal(modal, overlay);
-});
+// document.querySelector(".close-btn").addEventListener("click", () => {
+//   closeModal(modal, overlay);
+// });
 
-overlay.addEventListener("click", () => {
-  closeModal(modal, overlay);
-});
+// overlay.addEventListener("click", () => {
+//   closeModal(modal, overlay);
+// });
 
-document.querySelector("#confirm-btn-no").addEventListener("click", () => {
-  closeModal(modal, overlay);
-});
+// document.querySelector("#confirm-btn-no").addEventListener("click", () => {
+//   closeModal(modal, overlay);
+// });
 
-document.querySelector("#confirm-btn-yes").addEventListener("click", () => {
-  closeModal(modal, overlay);
+// document.querySelector("#confirm-btn-yes").addEventListener("click", () => {
+//   closeModal(modal, overlay);
 
-  const randomID = generateRandomID(8);
+//   const randomID = generateRandomID(8);
 
-  const date = formattedDate();
-  const orderJSON = {
-    cost,
-    tax,
-    shippingCost,
-    total,
-    orderID: randomID,
-    orderDate: date,
-  };
+//   const date = formattedDate();
+//   const orderJSON = {
+//     cost,
+//     tax,
+//     shippingCost,
+//     total,
+//     orderID: randomID,
+//     orderDate: date,
+//   };
 
-  if (JSON.parse(localStorage.getItem("order-summary")) != null) {
-    localStorage.removeItem("order-summary");
-  }
+//   if (JSON.parse(localStorage.getItem("order-summary")) != null) {
+//     localStorage.removeItem("order-summary");
+//   }
 
-  localStorage.setItem("order-summary", JSON.stringify(orderJSON));
-  localStorage.removeItem("burgers");
-  // console.log(JSON.parse(localStorage.getItem("order-summary")));
-});
+//   localStorage.setItem("order-summary", JSON.stringify(orderJSON));
+//   localStorage.removeItem("burgers");
+//   // console.log(JSON.parse(localStorage.getItem("order-summary")));
+// });
 
 function closeModal(modal, overlay) {
   if (modal == null || overlay == null) return;

@@ -83,11 +83,11 @@ class CartOrder extends HTMLElement {
       "₱" + Number(this.dataset.burgerTotal).toFixed(2);
     this.shadowRoot.querySelector("#burger-img").src = this.dataset.burgerImg;
 
-    const deleteBTNIcon = this.shadowRoot.createElement("i");
-    deleteBTNIcon.classList.add("fa-solid");
-    deleteBTNIcon.classList.add("fa-trash-can");
+    // const deleteBTNIcon = this.shadowRoot.createElement("i");
+    // deleteBTNIcon.classList.add("fa-solid");
+    // deleteBTNIcon.classList.add("fa-trash-can");
 
-    this.shadowRoot.querySelector("#deleteOrder").appendChild(deleteBTNIcon);
+    // this.shadowRoot.querySelector("#deleteOrder").appendChild(deleteBTNIcon);
     this.shadowRoot
       .querySelector("#deleteOrder")
       .addEventListener("click", () => {

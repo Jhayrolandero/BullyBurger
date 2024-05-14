@@ -93,7 +93,6 @@ class CustomerForm extends HTMLElement {
             composed: true,
           })
         );
-        console.log("Comp");
       } else {
         this.dispatchEvent(
           new CustomEvent("notCompleteForm", {
@@ -102,7 +101,6 @@ class CustomerForm extends HTMLElement {
             composed: true,
           })
         );
-        console.log("Not");
       }
     };
 
