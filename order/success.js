@@ -44,7 +44,20 @@ function renderSummary(
   address.innerText = customerInfo.address;
   phone.innerText = customerInfo.phone;
   deliverMode.innerText = orderSum.modeDelivery;
-  payment.innerText = paymentMethod.payment;
+
+  switch (paymentMethod.payment) {
+    case "Credit":
+      payment.innerText = "Credit Card";
+      break;
+    case "Paypal_GCash":
+      payment.innerText = "Paypal/GCash";
+      break;
+    case "Cash":
+      payment.innerText = "Cash";
+      break;
+  }
+
+  // payment.innerText = paymentMethod.payment;
 }
 
 renderSummary(

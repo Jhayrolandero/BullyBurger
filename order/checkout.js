@@ -17,6 +17,7 @@ const randomID = generateRandomID(8);
 const date = formattedDate();
 let modeDelivery = "Pickup";
 
+// rerender order preference every time the delivery mode changes
 document.querySelector("#pick").addEventListener("click", () => {
   modeDelivery = "Pickup";
 
@@ -53,6 +54,8 @@ document.querySelector("#deliver").addEventListener("click", () => {
   };
   makeOrderSum(orderJSON);
 });
+
+// render the cart as well the summary
 
 function renderCart() {
   if (

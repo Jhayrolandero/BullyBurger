@@ -270,6 +270,7 @@ incrementQuantity.addEventListener("click", () => {
   orderQuantityState.increment(burgerPrice);
 });
 
+// add to cart
 addOrder.addEventListener("click", () => {
   const burgerMenu = document.querySelector("#modal");
 
@@ -314,6 +315,7 @@ addOrder.addEventListener("click", () => {
   closeOverlay(burgerMenu);
 });
 
+//  Initial rendering
 function getLocalStorage() {
   if (
     JSON.parse(localStorage.getItem("burgers")) == null ||
@@ -339,6 +341,7 @@ function getLocalStorage() {
   });
 }
 
+// set new order storage
 function setLocalOrder(burgers) {
   const mapEntriesArray = Array.from(burgers);
   localStorage.removeItem("burgers");
@@ -359,6 +362,7 @@ function makeEmptyCart() {
   return emptyCartDisplay;
   // <i class="fa-duotone fa-cart-shopping"></i>
 }
+
 function setEmptyCart(orderList, emptyCart) {
   console.log(orderList);
   orderList.prepend(emptyCart);

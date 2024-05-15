@@ -85,7 +85,19 @@ class TransactionSummary extends HTMLElement {
 
     customer.innerText = customerInfo.name;
     address.innerText = customerInfo.address;
-    payment.innerText = paymentMethod.payment;
+
+    switch (paymentMethod.payment) {
+      case "Credit":
+        payment.innerText = "Credit Card";
+        break;
+      case "Paypal_GCash":
+        payment.innerText = "Paypal/GCash";
+        break;
+      case "Cash":
+        payment.innerText = "Cash";
+        break;
+    }
+    // payment.innerText = paymentMethod.payment;
     subTotal.innerText = "₱" + orderSummary.cost.toFixed(2);
     shippingCost.innerText = "₱" + orderSummary.shippingCost.toFixed(2);
     tax.innerText = "₱" + orderSummary.tax.toFixed(2);

@@ -34,15 +34,28 @@ body {
   gap: 1rem;
 }
 
+.sidebar-cont {
+  width: 15%;
+  min-width: 240px;
+  max-width: 480;
+  /* position: relative; */
+  /* overflow-y: auto; */
+  /* height: 100%; */
+}
+
 .sidebar {
   color: black;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  width: 15%;
+  /* width: 15%;
   min-width: 240px;
-  max-width: 480;
-  overflow-y: hidden;
+  max-width: 480; */
+  overflow-y: auto;
+  /* position: sticky; */
+  top: 0;
+  right: 0;
+  width: 100%;
 }
 
 .sidebar .search,
