@@ -60,6 +60,7 @@ function renderSummary(
   // payment.innerText = paymentMethod.payment;
 }
 
+// Render the transac summary
 renderSummary(
   orderIDDisplay,
   orderDateDisplay,

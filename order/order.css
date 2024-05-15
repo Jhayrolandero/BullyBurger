@@ -21,6 +21,7 @@ body {
 
 .container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   width: 100%;
   gap: 0.5rem;
@@ -35,9 +36,10 @@ body {
 }
 
 .sidebar-cont {
-  width: 15%;
+  width: 100%;
+  /* width: 15%;
   min-width: 240px;
-  max-width: 480;
+  max-width: 480; */
   /* position: relative; */
   /* overflow-y: auto; */
   /* height: 100%; */
@@ -596,4 +598,19 @@ body {
 
 .menu > a {
   width: 100%;
+}
+
+@media (min-width: 768px) {
+  .sidebar-cont {
+    width: 15%;
+    min-width: 240px;
+    max-width: 480;
+    /* position: relative; */
+    /* overflow-y: auto; */
+    /* height: 100%; */
+  }
+
+  .container {
+    flex-direction: row;
+  }
 }

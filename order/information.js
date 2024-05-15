@@ -167,3 +167,16 @@ document.addEventListener("notCompletePayment", () => {
     next.disabled = true;
   }
 });
+
+function checkCart() {
+  console.log(JSON.parse(localStorage.getItem("burgers")));
+  if (
+    JSON.parse(localStorage.getItem("burgers")) == null ||
+    JSON.parse(localStorage.getItem("burgers").length <= 0)
+  ) {
+    alert("Order First");
+    document.location = "./order.html";
+  }
+}
+
+checkCart();

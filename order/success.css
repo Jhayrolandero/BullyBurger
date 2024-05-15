@@ -75,6 +75,7 @@ h4 {
   display: flex;
   justify-content: space-between;
   font-size: 1.25rem;
+  gap: 1.5rem;
 }
 
 .summary-info > p {
