@@ -107,10 +107,23 @@ body {
 .menu-btn > i {
   font-size: 24px;
 }
-.menu-btn:hover {
+
+.menu > a {
+  list-style: none;
+  text-decoration: none;
+}
+.menu > a:hover {
   background-color: #d07026;
   color: #ffcf4e;
 }
+.menu > a:hover > button {
+  color: #ffcf4e;
+}
+
+/* .menu-btn:hover {
+  background-color: #d07026;
+  color: #ffcf4e;
+} */
 .menu > .menu-btn:nth-child(10):hover {
   background-color: #d07026;
   color: #ffcf4e;
@@ -246,6 +259,7 @@ body {
 
 .review-box > .profile {
   background-color: #d9d9d9;
+  border: 1px solid black;
   width: 72px;
   height: 72px;
   border-radius: 100%;
@@ -286,8 +300,18 @@ body {
 }
 #modal.active {
   transform: translate(-50%, -50%) scale(1);
+  animation: myAnim 0.5s ease 0s 1 normal forwards;
 }
 
+@keyframes myAnim {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
 .burger-desc {
   margin-left: 1rem;
   margin-right: 1rem;
@@ -462,6 +486,12 @@ body {
   overflow-y: auto;
 }
 
+.profile > img {
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+
 #close-nav-cont {
   color: white;
   position: relative;
@@ -549,4 +579,8 @@ body {
   .footer .row a i {
     margin: 0% 3%;
   }
+}
+
+.menu > a {
+  width: 100%;
 }

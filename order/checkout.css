@@ -382,63 +382,6 @@ body {
   width: 100%;
 }
 
-@media screen and (min-width: 320px) {
-  .container {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    /* height: 100vh; */
-    width: 100vw;
-  }
-}
-@media screen and (max-width: 320px) {
-  .container {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
-    height: 100vh;
-    width: 100vw;
-  }
-}
-
-@media screen and (max-width: 580px) {
-  #delivery-title {
-    font-size: 1rem;
-  }
-}
-
-@media screen and (max-width: 408px) {
-  #delivery-title {
-    font-size: 0.8rem;
-  }
-}
-
-@media screen and (max-width: 760px) {
-  #promo-input {
-    font-size: 0.7rem;
-  }
-}
-@media screen and (max-width: 760px) {
-  body > div.container > section > div.cart-summary > div.promo-div > div {
-    height: flex;
-    width: flex;
-  }
-  #promo-btn {
-    height: flex;
-    width: flex;
-    font-size: 0.6rem;
-  }
-}
-
-@media screen and (max-width: 1025px) {
-  body > div.container > section > div.cart-summary > div.mode {
-    width: flex;
-    height: flex;
-  }
-}
-
 .footer {
   background: #1e1e1e;
   padding: 30px 0px;
@@ -509,7 +452,6 @@ body {
     padding-left: 10rem;
     padding-right: 10rem;
     display: flex;
-    height: 100svh;
     width: 100%;
   }
 }

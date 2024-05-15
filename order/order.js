@@ -24,6 +24,7 @@ function factoryRemoveButton(burgerList, _burgers, burger_ID) {
   const removeButton = document.createElement("button");
   removeButton.classList.add("delete-order");
 
+  // Trash can icon
   const trashIcon = document.createElement("i");
   trashIcon.classList.add("fa-solid");
   trashIcon.classList.add("fa-trash-can");
@@ -43,6 +44,7 @@ function factoryRemoveButton(burgerList, _burgers, burger_ID) {
   return { removeButton, newBurgerList };
 }
 
+// Factory for making order list
 function factoryOrderList(
   burgerID,
   burgerQuantity,
