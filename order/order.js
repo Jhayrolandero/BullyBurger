@@ -89,6 +89,7 @@ function factoryOrderList(
   return burgerList;
 }
 
+// ?Rendering func in the cart
 function burger() {
   let _burgers = new Map();
 
