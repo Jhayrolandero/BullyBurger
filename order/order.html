@@ -55,73 +55,98 @@
   <body>
     <nav id="navbar">
       <img src="../public/images/Frame 83.svg" alt="" />
+      <a href="../index.html">
+        <button class="order-btn">Home</button>
+      </a>
     </nav>
+    <div id="top"></div>
     <main class="container">
       <div class="sidebar-cont">
         <aside class="sidebar">
-          <div class="menu">
-            <h4>
-              <span><i class="fa-regular fa-fork-knife"></i></span>Menu
-            </h4>
-            <a href="#special-burgers">
-              <button class="menu-btn">
-                <i class="fa-regular fa-burger"></i>
-                <p>Special Burger</p>
-              </button>
-            </a>
-            <a href="#steakhouse-burgers">
-              <button class="menu-btn">
-                <i class="fa-regular fa-burger-lettuce"></i>
-                <p>Steakhouse Burger</p>
-              </button>
-            </a>
-            <a href="#stacked-burgers">
-              <button class="menu-btn">
-                <i class="fa-sharp fa-light fa-burger"></i>
-                <p>Stacked Burger</p>
-              </button>
-            </a>
-            <a href="#smashed-burgers">
-              <button class="menu-btn">
-                <i class="fa-light fa-burger"></i>
-                <p>Smashed Burgers</p>
-              </button>
-            </a>
-            <a href="#desserts">
-              <button class="menu-btn">
-                <i class="fa-regular fa-burger-cheese"></i>
-                <p>Desserts</p>
-              </button>
-            </a>
-            <a href="#sides">
-              <button class="menu-btn">
-                <i class="fa-regular fa-ice-cream"></i>
-                <p>sides</p>
-              </button>
-            </a>
-            <a href="#fries">
-              <button class="menu-btn">
-                <i class="fa-sharp fa-regular fa-french-fries"></i>
-                <p>Fries</p>
-              </button>
-            </a>
-            <a href="#drinks">
-              <button class="menu-btn">
-                <i class="fa-duotone fa-cup-straw"></i>
-                <p>Drinks</p>
-              </button>
-            </a>
-          </div>
-          <div class="order">
-            <h4>
-              <span><i class="fa-light fa-cart-shopping"></i></span>My Order
-            </h4>
-            <div class="order-list">
-              <ul id="burger-order-list"></ul>
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-item-header">
+                <h4>
+                  <span><i class="fa-regular fa-fork-knife"></i></span>Menu
+                </h4>
+              </div>
+              <div class="accordion-item-body">
+                <div class="menu">
+                  <!-- <h4>
+                    <span><i class="fa-regular fa-fork-knife"></i></span>Menu
+                  </h4> -->
+                  <a href="#special-burgers">
+                    <button class="menu-btn">
+                      <i class="fa-regular fa-burger"></i>
+                      <p>Special Burger</p>
+                    </button>
+                  </a>
+                  <a href="#steakhouse-burgers">
+                    <button class="menu-btn">
+                      <i class="fa-regular fa-burger-lettuce"></i>
+                      <p>Steakhouse Burger</p>
+                    </button>
+                  </a>
+                  <a href="#stacked-burgers">
+                    <button class="menu-btn">
+                      <i class="fa-sharp fa-light fa-burger"></i>
+                      <p>Stacked Burger</p>
+                    </button>
+                  </a>
+                  <a href="#smashed-burgers">
+                    <button class="menu-btn">
+                      <i class="fa-light fa-burger"></i>
+                      <p>Smashed Burgers</p>
+                    </button>
+                  </a>
+                  <a href="#desserts">
+                    <button class="menu-btn">
+                      <i class="fa-regular fa-burger-cheese"></i>
+                      <p>Desserts</p>
+                    </button>
+                  </a>
+                  <a href="#sides">
+                    <button class="menu-btn">
+                      <i class="fa-regular fa-ice-cream"></i>
+                      <p>sides</p>
+                    </button>
+                  </a>
+                  <a href="#fries">
+                    <button class="menu-btn">
+                      <i class="fa-sharp fa-regular fa-french-fries"></i>
+                      <p>Fries</p>
+                    </button>
+                  </a>
+                  <a href="#drinks">
+                    <button class="menu-btn">
+                      <i class="fa-duotone fa-cup-straw"></i>
+                      <p>Drinks</p>
+                    </button>
+                  </a>
+                </div>
+              </div>
             </div>
-            <a href="./checkout.html">
-              <button class="button1">Confirm Order</button>
-            </a>
+            <div class="accordion-item">
+              <div class="accordion-item-header">
+                <h4>
+                  <span><i class="fa-light fa-cart-shopping"></i></span>My Order
+                </h4>
+              </div>
+              <div class="accordion-item-body">
+                <div class="order">
+                  <!-- <h4>
+                    <span><i class="fa-light fa-cart-shopping"></i></span>My
+                    Order
+                  </h4> -->
+                  <div class="order-list">
+                    <ul id="burger-order-list"></ul>
+                  </div>
+                  <a href="./checkout.html">
+                    <button class="button1">Confirm Order</button>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </aside>
       </div>
@@ -176,6 +201,7 @@
               </div>
               <div>
                 <div><h4>Aideen</h4></div>
+                `
                 <p>Mouth Watering taste</p>
               </div>
             </div>
@@ -214,6 +240,9 @@
       </div>
     </div>
     <div id="overlay"></div>
+    <div id="backtotop">
+      <a href="#top">Back to top</a>
+    </div>
     <footer>
       <div class="footer">
         <div class="row">

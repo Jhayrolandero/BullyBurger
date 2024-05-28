@@ -15,12 +15,12 @@ template.innerHTML = `
   }
   
       .review-box h4 {
-        font-size: 2.5rem;
+        font-size: 2rem;
         margin: 0;
       }
       
       .review-box p {
-        font-size: 1.5rem;
+        font-size: .75rem;
       }
   .review-container > div img {
     width: 100px;

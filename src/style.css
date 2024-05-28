@@ -63,7 +63,7 @@ section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 1.5rem 4rem;
+  padding: 0 1rem;
   z-index: 999;
 }
 
@@ -87,7 +87,7 @@ section {
 
 #main1 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   height: 100%;
@@ -122,7 +122,7 @@ section {
 }
 #featured-burger {
   width: 400px;
-  max-height: 90svh;
+  max-height: 40svh;
 }
 
 .burgerAnimation {
@@ -162,8 +162,8 @@ section {
 
 #burger-price {
   position: absolute;
-  width: 250px;
-  height: 250px;
+  width: 160px;
+  height: 160px;
   border-radius: 100%;
   display: flex;
   justify-content: center;
@@ -171,15 +171,15 @@ section {
   backdrop-filter: blur(40px);
   background-color: rgba(255, 255, 255, 0.1);
   bottom: 40px;
-  right: 80px;
+  right: 40px;
   flex-direction: column;
 }
 #burger-price p {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   color: white;
 }
 #burger-price #burger-name {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 @keyframes featureAnimBurger {
@@ -198,6 +198,7 @@ section {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
 }
 
 .main-1,
@@ -210,7 +211,7 @@ section {
   position: relative;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: center;
 }
 .main-1 div img {
   max-height: 100%;
@@ -218,7 +219,7 @@ section {
 }
 
 .main-1 div {
-  height: 100svh;
+  height: 50svh;
   aspect-ratio: 1/1;
   padding: 1.5em;
   position: relative;
@@ -237,7 +238,7 @@ section {
 }
 
 .main-2 h1 {
-  font-size: 4.5rem;
+  font-size: 2rem;
   color: #ffcf4e;
   text-align: center;
 }
@@ -253,8 +254,6 @@ section {
   justify-content: center;
   align-items: end;
   flex-direction: column;
-  padding-left: 7em;
-  padding-right: 7em;
   z-index: 1;
 }
 
@@ -269,11 +268,11 @@ section {
 
 #section3 {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 
 #section3 img {
-  max-height: 90svh;
+  max-height: 40svh;
 }
 
 #section3 #sec-3-main-2 {
@@ -287,17 +286,18 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: center;
 }
 #section3 #sec-3-main-1 h4 {
-  font-size: 10rem;
+  font-size: 5rem;
   color: #d07026;
   line-height: 0.8;
+  text-align: center;
 }
 
 #section3 #sec-3-main-3 h4 {
   color: #d07026;
-  font-size: 3.5rem;
+  font-size: 2rem;
 }
 
 #section3 #sec-3-main-3 p {
@@ -312,11 +312,11 @@ section {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 #section4 > h4 {
-  font-size: 6.5rem;
+  font-size: 2.5rem;
 }
 #sec-4-main-4 {
   display: flex;
@@ -326,8 +326,9 @@ section {
 
 #sec-4-main-4 .review-container {
   display: flex;
-  flex-direction: row;
-  gap: 2rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.75rem;
 }
 
 my-review-box {
@@ -416,68 +417,114 @@ my-review-box {
   }
 }
 
-.footer{
+.footer {
   background: #1e1e1e;
-  padding:30px 0px;
-  font-family: 'Play', sans-serif;
-  text-align:center;
+  padding: 30px 0px;
+  font-family: "Play", sans-serif;
+  text-align: center;
+}
+
+.footer .row {
+  width: 100%;
+  margin: 1% 0%;
+  padding: 0.6% 0%;
+  color: white;
+  font-size: 0.8em;
+}
+
+.footer .row a {
+  text-decoration: none;
+  color: white;
+  transition: 0.5s;
+}
+
+.footer .row a:hover {
+  color: rgb(228, 112, 17);
+}
+
+.footer .row a i {
+  font-size: 2em;
+  margin: 0% 1%;
+  color: rgb(228, 112, 17);
+}
+
+.footer .row ul {
+  width: 100%;
+}
+
+.footer .row ul li {
+  display: inline-block;
+  margin: 0px 30px;
+}
+
+.footer .row a i {
+  font-size: 2em;
+  margin: 0% 1%;
+}
+
+@media (max-width: 720px) {
+  #navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1.5rem 4rem;
+    z-index: 999;
   }
-  
-  .footer .row{
-  width:100%;
-  margin:1% 0%;
-  padding:0.6% 0%;
-  color:white;
-  font-size:0.8em;
+
+  .footer {
+    text-align: left;
+    padding: 5%;
   }
-  
-  .footer .row a{
-  text-decoration:none;
-  color:white;
-  transition:0.5s;
+  .footer .row ul li {
+    display: block;
+    margin: 10px 0px;
+    text-align: left;
   }
-  
-  .footer .row a:hover{
-  color:rgb(228, 112, 17);
-  }
-  
   .footer .row a i {
-    font-size: 2em;
-    margin: 0% 1%;
-    color: rgb(228, 112, 17);
+    margin: 0% 3%;
+  }
+}
+
+@media (min-width: 768px) {
+  #main1 {
+    flex-direction: row;
+  }
+  #section3 {
+    flex-direction: row;
   }
 
-  .footer .row ul{
-  width:100%;
-  }
-  
-  .footer .row ul li{
-  display:inline-block;
-  margin:0px 30px;
-  }
-  
-  .footer .row a i{
-  font-size:2em;
-  margin:0% 1%;
-  }
-  
-  @media (max-width:720px){
-  .footer{
-  text-align:left;
-  padding:5%;
-  }
-  .footer .row ul li{
-  display:block;
-  margin:10px 0px;
-  text-align:left;
-  }
-  .footer .row a i{
-  margin:0% 3%;
-  }
+  #featured-burger {
+    width: 400px;
+    max-height: 90svh;
   }
 
+  #burger-price {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(40px);
+    background-color: rgba(255, 255, 255, 0.1);
+    bottom: 40px;
+    right: 80px;
+    flex-direction: column;
+  }
 
-
+  #burger-price p {
+    font-size: 2.5rem;
+    color: white;
+  }
+  #burger-price #burger-name {
+    font-size: 2rem;
+  }
+}
 
 @media (min-width: 1440px) {
   #section4 > h4 {
@@ -520,5 +567,121 @@ my-review-box {
   #section3 #sec-3-main-3 p {
     font-size: 2.5rem;
   }
-}
 
+  #section3 img {
+    max-height: 90svh;
+  }
+
+  #section3 #sec-3-main-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #section3 #sec-3-main-1,
+  #section3 #sec-3-main-3 {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+  }
+  #section3 #sec-3-main-1 h4 {
+    font-size: 10rem;
+    color: #d07026;
+    line-height: 0.8;
+  }
+
+  #section3 #sec-3-main-3 h4 {
+    color: #d07026;
+    font-size: 3.5rem;
+  }
+
+  #section3 #sec-3-main-3 p {
+    font-size: 2.5rem;
+    background-color: #d07026;
+    padding: 0.25em;
+    border-radius: 0.25em;
+  }
+
+  #section4 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  #section4 > h4 {
+    font-size: 6.5rem;
+  }
+  #sec-4-main-4 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  #sec-4-main-4 .review-container {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    font-size: 1rem;
+  }
+
+  .main-1,
+  .main-2 {
+    height: 100%;
+  }
+
+  .main-1 {
+    width: 20%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+  }
+  .main-1 div img {
+    max-height: 100%;
+    width: 100%;
+  }
+
+  .main-1 div {
+    height: 100svh;
+    aspect-ratio: 1/1;
+    padding: 1.5em;
+    position: relative;
+  }
+
+  .main-1 div::before {
+    content: "";
+    position: absolute;
+    border: dashed 8px #ffcf4e;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    animation: rotate 12s cubic-bezier(0.72, 0.14, 0.22, 0.68) infinite;
+  }
+
+  .main-2 h1 {
+    font-size: 4.5rem;
+    color: #ffcf4e;
+    text-align: center;
+  }
+
+  .main-2 p {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .main-2 {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    flex-direction: column;
+    padding-left: 7em;
+    padding-right: 7em;
+    z-index: 1;
+  }
+}
